@@ -13,27 +13,33 @@ const config: Config = {
     extend:{
       colors:{
         black:{
-          black6: '#000000',
-          black5: '#2B2F32',
-          black4: '#5E6366',
-          black3: '#83898C',
-          black2: '#ABAFB1',
-          black1: '#CFD3D4'
+          black1: '#5E6366',
+          black2: '#2B2F32',
+          black3: '#130F26',
+          black4: '#000000'
         },
         gray: {
-          gray1: '#DDE2E5',
-          gray2: '#D9D9D9'
+          gray1: '#CFD3D4',
+          gray2: '#ABAFB1',
+          gray3: '#83898C',
+          gray4: '#D9D9D9',
+          gray5: '#DDE2E5',
+          gray6: '#EFF1F9',
+          gray7: '#F2F4F5',
         },
         red: {
           red1: '#F57E77',
           red2: '#FCF3F2'
         },
-        green: '#32936F',
-        purple: '#5570F1',
         blue: {
           blue1: '#007BFF',
           blue2: '#E9ECF8'
         },
+        green: {
+          gree1: '#32936F',
+          gree2: '#E5F6ED',
+        },
+        purple: '#5570F1',
         white: '#ffffff'
       }
     }
