@@ -4,7 +4,7 @@ import { Box } from "./icons/Box";
 export function Header() {
   return (
     <header className="bg-purple">
-      <nav className="flex justify-between items-center p-6">
+      <nav className="flex justify-between items-center p-6 lg:px-0 max-w-[1200px] mx-auto">
         <Link href="/">
           <Box />
         </Link>
