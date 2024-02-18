@@ -1,6 +1,6 @@
-import React from "react";
+import { SVGProps } from 'react';
 
-export function Box() {
+export function Box(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,16 +8,17 @@ export function Box() {
       height="32"
       fill="none"
       viewBox="0 0 32 32"
+      {...props}
     >
       <path
-        stroke="#fff"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
         d="M28 21.333V10.667a2.666 2.666 0 00-1.333-2.307l-9.334-5.333a2.666 2.666 0 00-2.666 0L5.333 8.36A2.667 2.667 0 004 10.667v10.666a2.667 2.667 0 001.333 2.307l9.334 5.333a2.667 2.667 0 002.666 0l9.334-5.333A2.667 2.667 0 0028 21.333z"
       ></path>
       <path
-        stroke="#fff"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
