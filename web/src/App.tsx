@@ -1,23 +1,21 @@
-'use client';
+import { ChangeEvent, useState } from "react";
+import { Header } from "./components/Header";
+import { Plus } from "./components/icons/Plus";
+import { Search } from "./components/inputs/Search";
+import { Select } from "./components/inputs/Select";
+import "./index.css";
 
-import { ChangeEvent, useState } from 'react';
-import { Header } from './components/Header';
-import { Search } from './components/inputs/Search';
-import { Select } from './components/inputs/Select';
-import Link from 'next/link';
-import { Plus } from './components/icons/Plus';
-
-export default function Home() {
-  const [orderbySelectedOption, setOrderbySelectedOption] = useState('');
+function App() {
+  const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
 
   const orderbyHtmlElementOptions = [
     {
-      value: 'menor-valor',
-      label: 'Menor Valor',
+      value: "menor-valor",
+      label: "Menor Valor",
     },
     {
-      value: 'maior-valor',
-      label: 'Maior Valor',
+      value: "maior-valor",
+      label: "Maior Valor",
     },
   ];
 
@@ -43,15 +41,17 @@ export default function Home() {
             value={orderbySelectedOption}
           />
 
-          <Link
-            href={'/'}
+          <a
+            href="/"
             className="capitalize bg-green-green1 px-4 py-[17px] rounded-xl w-full text-white font-normal text-xl flex justify-center items-center gap-5"
           >
             <Plus className="w-6 h-6" />
             Adicionar produto
-          </Link>
+          </a>
         </div>
       </main>
     </>
   );
 }
+
+export default App;
