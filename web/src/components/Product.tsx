@@ -4,7 +4,7 @@ import { Trash } from "./icons/Trash";
 export function Product() {
   return (
     <div className="border-gray-gray5 border rounded-[10px]">
-      <div className="py-5 px-[48.5px]">
+      <div className="py-5 px-[48.5px] border-b border-gray-gray5">
         <img src="https://picsum.photos/245/245" alt="" />
       </div>
 
