@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Plus } from "./components/icons/Plus";
 import { Search } from "./components/inputs/Search";
 import { Select } from "./components/inputs/Select";
+import { Product } from "./components/Product";
 import "./index.css";
 
 function App() {
@@ -57,6 +58,8 @@ function App() {
             <Plus className="w-6 h-6" />
             Adicionar produto
           </a>
+
+          <Product />
         </div>
       </main>
     </>
