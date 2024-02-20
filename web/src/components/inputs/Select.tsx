@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from "react";
 
 type SelectProps = {
   labelText: string;
@@ -7,12 +7,21 @@ type SelectProps = {
     label: string;
   }>;
   value: string;
+  className: string;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-export function Select({ labelText, options, value, onChange }: SelectProps) {
+export function Select({
+  labelText,
+  options,
+  value,
+  className,
+  onChange,
+}: SelectProps) {
   return (
-    <div className="border-gray-gray1 border-[1px] rounded-lg px-4 py-2">
+    <div
+      className={`border-gray-gray1 border-[1px] rounded-lg px-4 py-2 ${className}`}
+    >
       <div className="flex flex-col gap-[7px]">
         <label
           htmlFor="select-element"
