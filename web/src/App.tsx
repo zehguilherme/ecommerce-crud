@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="bg-white">
       <Header />
 
       <main className="max-w-[1200px] mx-auto">
@@ -74,7 +74,7 @@ function App() {
           </section>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 
