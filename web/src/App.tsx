@@ -4,7 +4,6 @@ import { Plus } from "./components/icons/Plus";
 import { Search } from "./components/inputs/Search";
 import { Select } from "./components/inputs/Select";
 import { Product } from "./components/Product";
-import "./index.css";
 
 function App() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
