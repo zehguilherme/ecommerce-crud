@@ -3,14 +3,16 @@ import { Magnifier } from "../icons/Magnifier";
 
 type SearchProps = {
   label: string;
-  placeholder: string;
-  className: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  id: string;
+  className?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export function Search({
   label,
   placeholder,
+  id,
   className,
   onChange,
 }: SearchProps) {
@@ -20,15 +22,15 @@ export function Search({
     >
       <Magnifier className="w-auto h-[19.22px] text-black-black3" />
 
-      <label htmlFor="search-input" className="sr-only">
+      <label htmlFor={id} className="sr-only">
         {label}
       </label>
 
       <div className="flex-1">
         <input
           type="search"
-          name="search-input"
-          id="search-input"
+          name={id}
+          id={id}
           placeholder={placeholder}
           className="w-full font-normal"
           onChange={onChange}
