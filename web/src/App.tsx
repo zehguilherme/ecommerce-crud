@@ -37,21 +37,23 @@ function App() {
             <Search
               label="Pesquisar"
               placeholder="Procurando por algo específico?"
+              id="product-search"
               onChange={handleSearchInputChange}
               className="w-full md:max-w-[375px]"
             />
 
             <Select
-              labelText="Ordenar por"
+              label="Ordenar por"
               options={orderbyHtmlElementOptions}
               onChange={handleOrderbyChange}
               value={orderbySelectedOption}
               className="w-full md:max-w-[375px]"
+              id="orderby"
             />
           </div>
 
           <a
-            href="/"
+            href="/produto"
             className="capitalize bg-green-green1 px-4 py-[17px] rounded-xl w-full md:max-w-[375px] text-white font-normal text-xl flex justify-center items-center gap-5"
           >
             <Plus className="w-6 h-6" />
