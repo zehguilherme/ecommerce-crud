@@ -1,7 +1,7 @@
 type TextProps = {
   label: string;
   id: string;
-  placeholder: string;
+  placeholder?: string;
   className?: string;
 };
 
@@ -16,6 +16,7 @@ export function Text({ label, id, placeholder, className }: TextProps) {
         <input
           type="text"
           id={id}
+          name={id}
           placeholder={placeholder}
           className={`text-gray-gray2 font-normal text-lg ${className}`}
         />
