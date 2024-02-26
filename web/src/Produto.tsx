@@ -1,5 +1,6 @@
 import { Header } from "./components/Header";
 import { Text } from "./components/inputs/Text";
+import { TextArea } from "./components/inputs/TextArea";
 
 export function Produto() {
   return (
@@ -11,8 +12,15 @@ export function Produto() {
           Cadastre um novo produto
         </h2>
 
-        <form>
-          <Text label="Nome" placeholder="Fone de Ouvido" id="nome" />
+        <form className="flex flex-col gap-6">
+          <Text label="Nome" placeholder="Fone de Ouvido" id="name" />
+
+          <TextArea
+            label="Descrição"
+            placeholder="Informe uma breve descrição..."
+            id="description"
+            rows={8}
+          />
         </form>
       </main>
     </div>
