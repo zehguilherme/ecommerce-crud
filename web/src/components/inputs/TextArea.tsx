@@ -1,9 +1,12 @@
+import { ChangeEvent } from "react";
+
 type TextAreaProps = {
   label: string;
   id: string;
   placeholder?: string;
   rows: number;
   className?: string;
+  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
 export function TextArea({
@@ -12,6 +15,7 @@ export function TextArea({
   placeholder,
   rows,
   className,
+  onChange,
 }: TextAreaProps) {
   return (
     <div className="border border-gray-gray1 rounded-lg px-4 py-2">
@@ -26,6 +30,7 @@ export function TextArea({
           rows={rows}
           placeholder={placeholder}
           className={`text-gray-gray2 font-normal text-lg ${className}`}
+          onChange={onChange}
         />
       </div>
     </div>
