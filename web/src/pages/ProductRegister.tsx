@@ -1,14 +1,14 @@
 import { ChangeEvent, useState } from "react";
-import { Header } from "./components/Header";
-import { Date } from "./components/inputs/Date";
-import { Number } from "./components/inputs/Number";
-import { Select } from "./components/inputs/Select";
-import { Text } from "./components/inputs/Text";
-import { TextArea } from "./components/inputs/TextArea";
-import { File } from "./components/inputs/File";
-import { Button } from "./components/Button";
+import { Header } from "../components/Header";
+import { Date } from "../components/inputs/Date";
+import { Number } from "../components/inputs/Number";
+import { Select } from "../components/inputs/Select";
+import { Text } from "../components/inputs/Text";
+import { TextArea } from "../components/inputs/TextArea";
+import { File } from "../components/inputs/File";
+import { Button } from "../components/Button";
 
-export function Produto() {
+export function ProductRegister() {
   const [categorySelectedOption, setCategorySelectedOption] = useState("");
 
   function handleCategoryChange(event: ChangeEvent<HTMLSelectElement>) {

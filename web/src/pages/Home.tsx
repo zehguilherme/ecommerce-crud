@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from "react";
-import { Header } from "./components/Header";
-import { Plus } from "./components/icons/Plus";
-import { Search } from "./components/inputs/Search";
-import { Select } from "./components/inputs/Select";
-import { Product } from "./components/Product";
+import { Header } from "../components/Header";
+import { Plus } from "../components/icons/Plus";
+import { Search } from "../components/inputs/Search";
+import { Select } from "../components/inputs/Select";
+import { Product } from "../components/Product";
 
-function App() {
+export function Home() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
 
   const orderbyHtmlElementOptions = [
@@ -78,5 +78,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
