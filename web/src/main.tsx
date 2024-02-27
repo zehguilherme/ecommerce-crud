@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import { Home } from "./pages/Home.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { Produto } from "./Produto.tsx";
+import { ProductRegister } from "./pages/ProductRegister.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
   },
   {
     path: "/produto",
-    element: <Produto />,
+    element: <ProductRegister />,
   },
 ]);
 
