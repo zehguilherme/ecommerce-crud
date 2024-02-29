@@ -59,7 +59,7 @@ export function Product() {
         </main>
 
         <footer className="flex justify-center gap-[70px] items-center p-[10px]">
-          <a href="">
+          <a href="/produto/editar">
             <Pencil className="w-6 h-6 text-gray-gray3" />
           </a>
 
