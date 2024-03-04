@@ -3,6 +3,7 @@ import { Pencil } from "./icons/Pencil";
 import { Trash } from "./icons/Trash";
 
 export function Product({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   id,
   thumbnail,
   title,
