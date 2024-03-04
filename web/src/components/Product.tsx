@@ -3,7 +3,6 @@ import { Pencil } from "./icons/Pencil";
 import { Trash } from "./icons/Trash";
 
 export function Product({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   id,
   thumbnail,
   title,
@@ -93,7 +92,7 @@ export function Product({
         </main>
 
         <footer className="flex justify-center gap-[70px] items-center p-[10px]">
-          <a href="/produto/editar">
+          <a href={`/produto/editar/${id}`}>
             <Pencil className="w-6 h-6 text-gray-gray3" />
           </a>
 
