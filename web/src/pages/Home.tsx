@@ -1,12 +1,14 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Plus } from "../components/icons/Plus";
 import { Search } from "../components/inputs/Search";
 import { Select } from "../components/inputs/Select";
 import { Product } from "../components/Product";
+import { ProductProps } from "../models/ProductProps";
 
 export function Home() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
+  const [products, setProducts] = useState(Array<ProductProps>);
 
   const orderbyHtmlElementOptions = [
     {
@@ -26,6 +28,18 @@ export function Home() {
   function handleOrderbyChange(event: ChangeEvent<HTMLSelectElement>) {
     setOrderbySelectedOption(event.target.value);
   }
+
+  async function fetchProductsData() {
+    const response = await fetch("https://dummyjson.com/products");
+
+    const { products } = await response.json();
+
+    setProducts(products);
+  }
+
+  useEffect(() => {
+    fetchProductsData();
+  }, []);
 
   return (
     <div className="bg-white">
@@ -60,18 +74,18 @@ export function Home() {
             Adicionar produto
           </a>
 
-          <section className="flex flex-col items-center gap-8 sm:gap-5 sm:grid sm:place-items-center sm:grid-cols-2 md:grid-cols-3 max-w-[895px]">
-            <Product />
-
-            <Product />
-
-            <Product />
-
-            <Product />
-
-            <Product />
-
-            <Product />
+          <section className="flex flex-col items-center gap-8 sm:gap-5 sm:grid sm:place-items-stretch sm:grid-cols-2 md:grid-cols-3 max-w-[895px]">
+            {products.map((product) => (
+              <Product
+                key={product.id}
+                id={product.id}
+                thumbnail={product.thumbnail}
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                discountPercentage={product.discountPercentage}
+              />
+            ))}
           </section>
         </div>
       </main>

@@ -1,34 +1,67 @@
+import { ProductProps } from "../models/ProductProps";
 import { Pencil } from "./icons/Pencil";
 import { Trash } from "./icons/Trash";
 
-export function Product() {
+export function Product({
+  id,
+  thumbnail,
+  title,
+  description,
+  price,
+  discountPercentage,
+}: ProductProps) {
+  function convertPointValueToCommaValue(pointValue: number): string {
+    const commaValue = pointValue.toString().replace(/\./g, ",");
+
+    return commaValue;
+  }
+
+  function convertPercentageNumberToDecimalNumber(
+    percentageNumber: number
+  ): number {
+    return percentageNumber / 100;
+  }
+
+  function calculatePriceWithoutDiscount(): string {
+    return (
+      price /
+      (1 - convertPercentageNumberToDecimalNumber(discountPercentage))
+    ).toFixed(2);
+  }
+
   return (
-    <article className="border-gray-gray5 border rounded-[10px] max-w-[285px]">
-      <figure className="py-5 px-[48.5px] border-b border-gray-gray5 flex items-center justify-center">
-        <img src="https://picsum.photos/245/245" alt="Imagem randômica" />
+    <article className="border-gray-gray5 border rounded-[10px] max-w-[285px] max-h-[596px]">
+      <figure className="p-5 border-b border-gray-gray5 flex items-center justify-center">
+        <img
+          src={thumbnail}
+          alt={description}
+          className="w-full h-[245px] object-cover object-center"
+        />
       </figure>
 
-      <section className="p-5 flex flex-col gap-[10px]">
+      <section className="p-5 flex flex-col gap-[10px] justify-between">
         <header>
-          <h2 className="font-normal text-black-black4 text-base">
-            Amazon Echo Dot 5th Gen com assistente virtual Alexa deep sea blue
-            110V/240V
+          <h2 className="font-normal text-black-black4 text-base line-clamp-2">
+            {title} - {description}
           </h2>
         </header>
 
         <main className="flex flex-col gap-[10px]">
           <div className="flex flex-col gap-[5px]">
             <span className="text-sm text-gray-gray2 font-normal line-through">
-              R$ 429
+              R${" "}
+              {convertPointValueToCommaValue(
+                Number(calculatePriceWithoutDiscount())
+              )}
             </span>
 
             <div className="flex items-center gap-[10px]">
               <span className="text-black-black4 text-2xl font-medium">
-                R$ 321
+                R$ {price}
               </span>
 
               <span className="text-green-green1 text-sm font-normal">
-                25% OFF
+                {convertPointValueToCommaValue(discountPercentage)}% OFF
               </span>
             </div>
 
@@ -36,7 +69,7 @@ export function Product() {
               em
               <span className="text-green-green1">
                 {" "}
-                10x R$ 32,10 sem juros
+                10x R$ {convertPointValueToCommaValue(price / 10)} sem juros
               </span>{" "}
             </span>
           </div>
@@ -53,7 +86,7 @@ export function Product() {
             </span>
 
             <span className="text-black-black4 text-sm font-normal">
-              R$ 301 (à vista)
+              R$ {price} (à vista)
             </span>
           </div>
         </main>
