@@ -5,6 +5,7 @@ import { Search } from "../components/inputs/Search";
 import { Select } from "../components/inputs/Select";
 import { Product } from "../components/Product";
 import { ProductProps } from "../models/ProductProps";
+import { Link } from "react-router-dom";
 
 export function Home() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
@@ -66,13 +67,13 @@ export function Home() {
             />
           </div>
 
-          <a
-            href="/produto"
+          <Link
+            to="/produto"
             className="capitalize bg-green-green1 px-4 py-[17px] rounded-xl w-full md:max-w-[375px] text-white font-normal text-xl flex justify-center items-center gap-5"
           >
             <Plus className="w-6 h-6" />
             Adicionar produto
-          </a>
+          </Link>
 
           <section className="flex flex-col items-center gap-8 sm:gap-5 sm:grid sm:place-items-stretch sm:grid-cols-2 md:grid-cols-3 max-w-[895px]">
             {products.map((product) => (
