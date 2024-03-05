@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ProductProps } from "../models/ProductProps";
 import { Pencil } from "./icons/Pencil";
 import { Trash } from "./icons/Trash";
@@ -92,13 +93,13 @@ export function Product({
         </main>
 
         <footer className="flex justify-center gap-[70px] items-center p-[10px]">
-          <a href={`/produto/editar/${id}`}>
+          <Link to={`/produto/editar/${id}`}>
             <Pencil className="w-6 h-6 text-gray-gray3" />
-          </a>
+          </Link>
 
-          <a href="">
+          <Link to="">
             <Trash className="w-6 h-6 text-red-red1" />
-          </a>
+          </Link>
         </footer>
       </section>
     </article>
