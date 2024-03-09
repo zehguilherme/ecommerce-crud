@@ -15,49 +15,6 @@ export function ProductEdit() {
     setCategorySelectedOption(event.target.value);
   }
 
-  const categoryHtmlElementOptions = [
-    {
-      value: "",
-      label: "Selecione uma opção...",
-    },
-    {
-      value: "eletronicos",
-      label: "Eletrônicos",
-    },
-    {
-      value: "roupas",
-      label: "Roupas",
-    },
-    {
-      value: "acessorios",
-      label: "Acessórios",
-    },
-    {
-      value: "livros",
-      label: "Livros",
-    },
-    {
-      value: "alimentos",
-      label: "Alimentos",
-    },
-    {
-      value: "moveis",
-      label: "Móveis",
-    },
-    {
-      value: "esportes",
-      label: "Artigos Esportivos",
-    },
-    {
-      value: "beleza",
-      label: "Produtos de Beleza",
-    },
-    {
-      value: "brinquedos",
-      label: "Brinquedos",
-    },
-  ];
-
   return (
     <div className="bg-white">
       <Header />
@@ -69,74 +26,114 @@ export function ProductEdit() {
           </h2>
 
           <form className="flex flex-col gap-6">
-            <Text label="Nome" placeholder="Fone de Ouvido" id="name" />
+            <Text
+              label="Nome"
+              placeholder="Fone de Ouvido"
+              id="name"
+              errorMessage=""
+              value=""
+            />
 
             <TextArea
               label="Descrição"
               placeholder="Informe uma breve descrição..."
               id="description"
               rows={8}
+              value=""
+              errorMessage=""
             />
 
             <Number
               label="Preço anterior"
               id="previous-price"
               placeholder="R$ 120,00"
+              value=""
+              errorMessage=""
             />
 
             <Number
               label="Preço atual"
               id="current-price"
               placeholder="R$ 150,00"
+              value=""
+              errorMessage=""
             />
 
-            <Number label="Desconto" id="discount" placeholder="R$ 10,00" />
+            <Number
+              label="Desconto"
+              id="discount"
+              placeholder="R$ 10,00"
+              value=""
+              errorMessage=""
+            />
 
             <Number
               label="Quantidade de Parcelas"
               id="installments-number"
               placeholder="12"
+              value=""
+              errorMessage=""
             />
 
             <Number
               label="Valor de cada parcela"
               id="installments-value"
               placeholder="R$ 30,00"
+              value=""
+              errorMessage=""
             />
 
             <Number
               label="Valor à vista"
               id="R$ 140,00"
               placeholder="R$ 140,00"
+              value=""
+              errorMessage=""
             />
 
             <Date
               label="Date de entrega (Prevista)"
               id="delivery-date"
               placeholder="26/02/2024"
+              value=""
+              errorMessage=""
             />
 
             <Number
               label="Quantidade em Estoque"
               id="quantity"
               placeholder="50"
+              value=""
+              errorMessage=""
             />
 
-            <Text label="Marca" placeholder="Edifier" id="brand" />
+            <Text
+              label="Marca"
+              placeholder="Edifier"
+              id="brand"
+              value=""
+              errorMessage=""
+            />
 
             <Select
               label="Categoria"
               id="category"
-              options={categoryHtmlElementOptions}
               value={categorySelectedOption}
               onChange={handleCategoryChange}
-            />
+              errorMessage=""
+            >
+              <option value="" className="capitalize">
+                Selecione uma opção...
+              </option>
+            </Select>
 
             <File
               label="Imagem"
               placeholder="Escolher arquivo"
               id="image"
               acceptedTypes="image/*"
+              value=""
+              errorMessage=""
             />
 
             <Button

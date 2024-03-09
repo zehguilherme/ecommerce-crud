@@ -11,17 +11,6 @@ export function Home() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
   const [products, setProducts] = useState(Array<ProductProps>);
 
-  const orderbyHtmlElementOptions = [
-    {
-      value: "menor-valor",
-      label: "Menor Valor",
-    },
-    {
-      value: "maior-valor",
-      label: "Maior Valor",
-    },
-  ];
-
   function handleSearchInputChange(event: ChangeEvent<HTMLInputElement>) {
     console.log(event.target.value);
   }
@@ -59,12 +48,24 @@ export function Home() {
 
             <Select
               label="Ordenar por"
-              options={orderbyHtmlElementOptions}
               onChange={handleOrderbyChange}
               value={orderbySelectedOption}
               className="w-full md:max-w-[375px]"
               id="orderby"
-            />
+              errorMessage=""
+            >
+              <option value="" className="capitalize">
+                Selecione uma opção...
+              </option>
+
+              <option value="lowestValue" className="capitalize">
+                Menor valor
+              </option>
+
+              <option value="biggestValue" className="capitalize">
+                Maior valor
+              </option>
+            </Select>
           </div>
 
           <Link
