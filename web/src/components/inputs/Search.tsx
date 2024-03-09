@@ -15,6 +15,7 @@ export function Search({
   id,
   className,
   onChange,
+  ...props
 }: SearchProps) {
   return (
     <div
@@ -34,6 +35,7 @@ export function Search({
           placeholder={placeholder}
           className="w-full font-normal"
           onChange={onChange}
+          {...props}
         />
       </div>
     </div>
