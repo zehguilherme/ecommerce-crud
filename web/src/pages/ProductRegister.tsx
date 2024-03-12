@@ -9,20 +9,46 @@ import { Button } from "../components/Button";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function ProductRegister() {
   const [categories, setCategories] = useState(Array<string>);
 
+  function productRegisteredSuccessfully() {
+    return toast(`Produto cadastrado com sucesso!`, {
+      type: "success",
+    });
+  }
+
+  function productRegisteredUnsuccessfully() {
+    return toast(`Erro ao enviar cadastrar o produto!`, {
+      type: "error",
+    });
+  }
+
+  function failedFetchCategories() {
+    return toast(`Erro ao carregar as informações do campo Categoria!`, {
+      type: "error",
+    });
+  }
+
   async function fetchCategories() {
-    const response = await fetch("https://dummyjson.com/products/categories");
+    try {
+      const response = await fetch("https://dummyjson.com/products/categories");
 
-    const categoriesArray: Array<string> = await response.json();
+      const categoriesArray: Array<string> = await response.json();
 
-    const categoriesArrayUppercase = categoriesArray.map(
-      (category) => `${category.charAt(0).toUpperCase()}${category.slice(1)}`
-    );
+      const categoriesArrayUppercase = categoriesArray.map(
+        (category) => `${category.charAt(0).toUpperCase()}${category.slice(1)}`
+      );
 
-    setCategories(categoriesArrayUppercase);
+      setCategories(categoriesArrayUppercase);
+    } catch (error) {
+      failedFetchCategories();
+
+      setCategories([]);
+    }
   }
 
   useEffect(() => {
@@ -88,9 +114,13 @@ export function ProductRegister() {
 
         console.log(newProduct);
 
+        productRegisteredSuccessfully();
+
         formik.resetForm();
       } catch (error) {
-        console.log("Erro ao enviar o formulário!");
+        console.log("Erro ao enviar cadastrar o produto!");
+
+        productRegisteredUnsuccessfully();
       }
     },
   });
@@ -263,6 +293,8 @@ export function ProductRegister() {
           </form>
         </div>
       </main>
+
+      <ToastContainer />
     </div>
   );
 }
