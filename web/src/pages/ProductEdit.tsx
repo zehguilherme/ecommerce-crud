@@ -30,8 +30,10 @@ export function ProductEdit() {
               label="Nome"
               placeholder="Fone de Ouvido"
               id="name"
-              errorMessage=""
+              error=""
               value=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <TextArea
@@ -40,7 +42,9 @@ export function ProductEdit() {
               id="description"
               rows={8}
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -48,7 +52,9 @@ export function ProductEdit() {
               id="previous-price"
               placeholder="R$ 120,00"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -56,7 +62,9 @@ export function ProductEdit() {
               id="current-price"
               placeholder="R$ 150,00"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -64,7 +72,9 @@ export function ProductEdit() {
               id="discount"
               placeholder="R$ 10,00"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -72,7 +82,9 @@ export function ProductEdit() {
               id="installments-number"
               placeholder="12"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -80,7 +92,9 @@ export function ProductEdit() {
               id="installments-value"
               placeholder="R$ 30,00"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -88,7 +102,9 @@ export function ProductEdit() {
               id="R$ 140,00"
               placeholder="R$ 140,00"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Date
@@ -96,7 +112,9 @@ export function ProductEdit() {
               id="delivery-date"
               placeholder="26/02/2024"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Number
@@ -104,7 +122,9 @@ export function ProductEdit() {
               id="quantity"
               placeholder="50"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Text
@@ -112,7 +132,9 @@ export function ProductEdit() {
               placeholder="Edifier"
               id="brand"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Select
@@ -120,7 +142,8 @@ export function ProductEdit() {
               id="category"
               value={categorySelectedOption}
               onChange={handleCategoryChange}
-              errorMessage=""
+              error=""
+              onBlur={() => {}}
             >
               <option value="" className="capitalize">
                 Selecione uma opção...
@@ -133,7 +156,9 @@ export function ProductEdit() {
               id="image"
               acceptedTypes="image/*"
               value=""
-              errorMessage=""
+              error=""
+              onChange={() => {}}
+              onBlur={() => {}}
             />
 
             <Button

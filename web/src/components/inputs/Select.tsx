@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode } from "react";
+import { ChangeEvent, FocusEvent, ReactNode } from "react";
 
 type SelectProps = {
   label: string;
@@ -6,8 +6,9 @@ type SelectProps = {
   className?: string;
   id: string;
   children: ReactNode;
-  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
-  errorMessage: string | undefined;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onBlur: (event: FocusEvent<unknown, Element>) => void;
+  error: string | boolean | undefined;
 };
 
 export function Select({
@@ -17,7 +18,8 @@ export function Select({
   id,
   children,
   onChange,
-  errorMessage,
+  onBlur,
+  error,
 }: SelectProps) {
   return (
     <div className="flex flex-col gap-1">
@@ -35,17 +37,16 @@ export function Select({
             className="text-gray-gray2 font-normal text-lg relative left-[-4px]"
             value={value}
             onChange={onChange}
+            onBlur={onBlur}
           >
             {children}
           </select>
         </div>
       </div>
 
-      {errorMessage ? (
-        <span className="text-red-red1 font-normal text-sm">
-          {errorMessage}
-        </span>
-      ) : null}
+      {error && (
+        <span className="text-red-red1 font-normal text-sm">{error}</span>
+      )}
     </div>
   );
 }
