@@ -1,13 +1,14 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FocusEvent } from "react";
 
 type NumberProps = {
   label: string;
   id: string;
   placeholder?: string;
   className?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (event: FocusEvent<unknown, Element>) => void;
   value: string;
-  errorMessage: string | undefined;
+  error: string | boolean | undefined;
 };
 
 export function Number({
@@ -16,8 +17,9 @@ export function Number({
   placeholder,
   className,
   onChange,
+  onBlur,
   value,
-  errorMessage,
+  error,
 }: NumberProps) {
   return (
     <div className="flex flex-col gap-1">
@@ -35,15 +37,14 @@ export function Number({
             className={`text-gray-gray2 font-normal text-lg ${className}`}
             onChange={onChange}
             value={value}
+            onBlur={onBlur}
           />
         </div>
       </div>
 
-      {errorMessage ? (
-        <span className="text-red-red1 font-normal text-sm">
-          {errorMessage}
-        </span>
-      ) : null}
+      {error && (
+        <span className="text-red-red1 font-normal text-sm">{error}</span>
+      )}
     </div>
   );
 }

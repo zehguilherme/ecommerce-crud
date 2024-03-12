@@ -112,7 +112,8 @@ export function ProductRegister() {
               id="name"
               onChange={formik.handleChange}
               value={formik.values.name}
-              errorMessage={formik.errors.name}
+              error={formik.touched.name && formik.errors.name}
+              onBlur={formik.handleBlur}
             />
 
             <TextArea
@@ -122,7 +123,8 @@ export function ProductRegister() {
               rows={8}
               onChange={formik.handleChange}
               value={formik.values.description}
-              errorMessage={formik.errors.description}
+              error={formik.touched.description && formik.errors.description}
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -131,7 +133,10 @@ export function ProductRegister() {
               placeholder="R$ 120,00"
               onChange={formik.handleChange}
               value={formik.values.previousPrice}
-              errorMessage={formik.errors.previousPrice}
+              error={
+                formik.touched.previousPrice && formik.errors.previousPrice
+              }
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -140,7 +145,8 @@ export function ProductRegister() {
               placeholder="R$ 150,00"
               onChange={formik.handleChange}
               value={formik.values.currentPrice}
-              errorMessage={formik.errors.currentPrice}
+              error={formik.touched.currentPrice && formik.errors.currentPrice}
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -149,7 +155,8 @@ export function ProductRegister() {
               placeholder="R$ 10,00"
               onChange={formik.handleChange}
               value={formik.values.discount}
-              errorMessage={formik.errors.discount}
+              error={formik.touched.discount && formik.errors.discount}
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -158,7 +165,11 @@ export function ProductRegister() {
               placeholder="12"
               onChange={formik.handleChange}
               value={formik.values.installmentsNumber}
-              errorMessage={formik.errors.installmentsNumber}
+              error={
+                formik.touched.installmentsNumber &&
+                formik.errors.installmentsNumber
+              }
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -167,7 +178,11 @@ export function ProductRegister() {
               placeholder="R$ 30,00"
               onChange={formik.handleChange}
               value={formik.values.installmentsValue}
-              errorMessage={formik.errors.installmentsValue}
+              error={
+                formik.touched.installmentsValue &&
+                formik.errors.installmentsValue
+              }
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -176,7 +191,8 @@ export function ProductRegister() {
               placeholder="R$ 140,00"
               onChange={formik.handleChange}
               value={formik.values.price}
-              errorMessage={formik.errors.price}
+              error={formik.touched.price && formik.errors.price}
+              onBlur={formik.handleBlur}
             />
 
             <Date
@@ -185,7 +201,8 @@ export function ProductRegister() {
               placeholder="26/02/2024"
               onChange={formik.handleChange}
               value={formik.values.deliveryDate}
-              errorMessage={formik.errors.deliveryDate}
+              error={formik.touched.deliveryDate && formik.errors.deliveryDate}
+              onBlur={formik.handleBlur}
             />
 
             <Number
@@ -194,7 +211,8 @@ export function ProductRegister() {
               placeholder="50"
               onChange={formik.handleChange}
               value={formik.values.quantity}
-              errorMessage={formik.errors.quantity}
+              error={formik.touched.quantity && formik.errors.quantity}
+              onBlur={formik.handleBlur}
             />
 
             <Text
@@ -203,7 +221,8 @@ export function ProductRegister() {
               id="brand"
               onChange={formik.handleChange}
               value={formik.values.brand}
-              errorMessage={formik.errors.brand}
+              error={formik.touched.brand && formik.errors.brand}
+              onBlur={formik.handleBlur}
             />
 
             <Select
@@ -211,7 +230,8 @@ export function ProductRegister() {
               id="category"
               onChange={formik.handleChange}
               value={formik.values.category}
-              errorMessage={formik.errors.category}
+              error={formik.touched.category && formik.errors.category}
+              onBlur={formik.handleBlur}
             >
               <option value="" className="capitalize">
                 Selecione uma opção...
@@ -231,7 +251,8 @@ export function ProductRegister() {
               acceptedTypes="image/*"
               onChange={formik.handleChange}
               value={formik.values.image}
-              errorMessage={formik.errors.image}
+              error={formik.touched.image && formik.errors.image}
+              onBlur={formik.handleBlur}
             />
 
             <Button

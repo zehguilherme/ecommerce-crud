@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FocusEvent } from "react";
 
 type TextAreaProps = {
   label: string;
@@ -6,9 +6,10 @@ type TextAreaProps = {
   placeholder?: string;
   rows: number;
   className?: string;
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onBlur: (event: FocusEvent<unknown, Element>) => void;
   value: string;
-  errorMessage: string | undefined;
+  error: string | boolean | undefined;
 };
 
 export function TextArea({
@@ -18,8 +19,9 @@ export function TextArea({
   rows,
   className,
   onChange,
+  onBlur,
   value,
-  errorMessage,
+  error,
 }: TextAreaProps) {
   return (
     <div className="flex flex-col gap-1">
@@ -36,16 +38,15 @@ export function TextArea({
             placeholder={placeholder}
             className={`text-gray-gray2 font-normal text-lg ${className}`}
             onChange={onChange}
+            onBlur={onBlur}
             value={value}
           />
         </div>
       </div>
 
-      {errorMessage ? (
-        <span className="text-red-red1 font-normal text-sm">
-          {errorMessage}
-        </span>
-      ) : null}
+      {error && (
+        <span className="text-red-red1 font-normal text-sm">{error}</span>
+      )}
     </div>
   );
 }

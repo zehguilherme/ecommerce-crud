@@ -52,7 +52,8 @@ export function Home() {
               value={orderbySelectedOption}
               className="w-full md:max-w-[375px]"
               id="orderby"
-              errorMessage=""
+              error=""
+              onBlur={() => {}}
             >
               <option value="" className="capitalize">
                 Selecione uma opção...
