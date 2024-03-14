@@ -5,11 +5,11 @@ import { Trash } from "./icons/Trash";
 
 export function Product({
   id,
-  thumbnail,
-  title,
+  image,
+  name,
   description,
   price,
-  discountPercentage,
+  discount,
 }: ProductProps) {
   function convertPointValueToCommaValue(pointValue: number): string {
     const commaValue = pointValue.toString().replace(/\./g, ",");
@@ -26,7 +26,7 @@ export function Product({
   function calculatePriceWithoutDiscount(): string {
     return (
       price /
-      (1 - convertPercentageNumberToDecimalNumber(discountPercentage))
+      (1 - convertPercentageNumberToDecimalNumber(discount))
     ).toFixed(2);
   }
 
@@ -34,7 +34,7 @@ export function Product({
     <article className="border-gray-gray5 border rounded-[10px] max-w-[285px] max-h-[596px]">
       <figure className="p-5 border-b border-gray-gray5 flex items-center justify-center">
         <img
-          src={thumbnail}
+          src={image}
           alt={description}
           className="w-full h-[245px] object-cover object-center"
         />
@@ -43,7 +43,7 @@ export function Product({
       <section className="p-5 flex flex-col gap-[10px] justify-between">
         <header>
           <h2 className="font-normal text-black-black4 text-base line-clamp-2">
-            {title} - {description}
+            {name} - {description}
           </h2>
         </header>
 
@@ -62,7 +62,7 @@ export function Product({
               </span>
 
               <span className="text-green-green1 text-sm font-normal">
-                {convertPointValueToCommaValue(discountPercentage)}% OFF
+                {convertPointValueToCommaValue(discount)}% OFF
               </span>
             </div>
 
