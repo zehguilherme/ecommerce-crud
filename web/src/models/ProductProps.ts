@@ -1,8 +1,8 @@
 export type ProductProps = {
   id: number;
-  thumbnail: string;
-  title: string;
+  image: string;
+  name: string;
   description: string;
   price: number;
-  discountPercentage: number;
+  discount: number;
 };

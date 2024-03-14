@@ -20,9 +20,20 @@ export function Home() {
   }
 
   async function fetchProductsData() {
-    const response = await fetch("https://dummyjson.com/products");
+    const response = await fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: `${import.meta.env.VITE_SUPABASE_KEY}`,
+        },
+      }
+    );
 
-    const { products } = await response.json();
+    const products = await response.json();
+
+    console.log(products);
 
     setProducts(products);
   }
@@ -82,11 +93,11 @@ export function Home() {
               <Product
                 key={product.id}
                 id={product.id}
-                thumbnail={product.thumbnail}
-                title={product.title}
+                image={product.image}
+                name={product.name}
                 description={product.description}
                 price={product.price}
-                discountPercentage={product.discountPercentage}
+                discount={product.discount}
               />
             ))}
           </section>
