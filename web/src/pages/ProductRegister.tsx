@@ -33,11 +33,32 @@ export function ProductRegister() {
     });
   }
 
-  async function fetchCategories() {
+  function fetchCategories() {
     try {
-      const response = await fetch("https://dummyjson.com/products/categories");
-
-      const categoriesArray: Array<string> = await response.json();
+      const categoriesArray = [
+        "smartphones",
+        "laptops",
+        "eletrônicos",
+        "eletrodomésticos",
+        "fragrâncias",
+        "cuidados com a pele",
+        "mantimentos",
+        "decoração para casa",
+        "móveis",
+        "tops",
+        "vestidos femininos",
+        "sapatos femininos",
+        "camisetas masculinas",
+        "sapatos masculinos",
+        "relógios masculinos",
+        "relógios femininos",
+        "bolsas femininas",
+        "joias femininas",
+        "óculos de sol",
+        "automóveis",
+        "motocicletas",
+        "iluminação",
+      ];
 
       const categoriesArrayUppercase = categoriesArray.map(
         (category) => `${category.charAt(0).toUpperCase()}${category.slice(1)}`
