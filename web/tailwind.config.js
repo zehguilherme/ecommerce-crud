@@ -32,6 +32,7 @@ export default {
         red: {
           red1: "#F57E77",
           red2: "#FCF3F2",
+          red3: "#C95F58",
         },
         blue: {
           blue1: "#007BFF",
@@ -40,6 +41,7 @@ export default {
         green: {
           green1: "#32936F",
           green2: "#E5F6ED",
+          green3: "#458B71",
         },
         purple: "#5570F1",
         white: "#ffffff",
