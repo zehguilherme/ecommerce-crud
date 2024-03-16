@@ -250,7 +250,7 @@ export function ProductRegister() {
             <Button
               text="Cadastrar novo produto"
               type="submit"
-              className="bg-green-green1 text-white"
+              className="bg-green-green1 hover:bg-green-green3 text-white"
             />
           </form>
         </div>

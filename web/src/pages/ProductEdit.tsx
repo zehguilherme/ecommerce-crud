@@ -134,7 +134,7 @@ export function ProductEdit() {
             <Button
               text="Editar informações"
               type="submit"
-              className="bg-green-green1 text-white"
+              className="bg-green-green1 hover:bg-green-green3 text-white"
               onClick={() => {}}
             />
           </form>

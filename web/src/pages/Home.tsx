@@ -82,7 +82,7 @@ export function Home() {
 
           <Link
             to="/produto"
-            className="capitalize bg-green-green1 px-4 py-[17px] rounded-xl w-full md:max-w-[375px] text-white font-normal text-xl flex justify-center items-center gap-5"
+            className="capitalize bg-green-green1 hover:bg-green-green3 px-4 py-[17px] rounded-xl w-full md:max-w-[375px] text-white font-normal text-xl flex justify-center items-center gap-5"
           >
             <Plus className="w-6 h-6" />
             Adicionar produto
