@@ -58,12 +58,10 @@ export function ProductRegister() {
   const ProductSchema = Yup.object().shape({
     name: Yup.string().required("O campo é obrigatório!"),
     description: Yup.string().required("O campo é obrigatório!"),
-    previousPrice: Yup.string().required("O campo é obrigatório!"),
+    priceWithoutDiscount: Yup.string().required("O campo é obrigatório!"),
     currentPrice: Yup.string().required("O campo é obrigatório!"),
     discount: Yup.string().required("O campo é obrigatório!"),
     installmentsNumber: Yup.string().required("O campo é obrigatório!"),
-    installmentsValue: Yup.string().required("O campo é obrigatório!"),
-    price: Yup.string().required("O campo é obrigatório!"),
     deliveryDate: Yup.date().required("O campo é obrigatório!"),
     quantity: Yup.string().required("O campo é obrigatório!"),
     brand: Yup.string().required("O campo é obrigatório!"),
@@ -75,12 +73,10 @@ export function ProductRegister() {
     initialValues: {
       name: "",
       description: "",
-      previousPrice: "",
+      priceWithoutDiscount: "",
       currentPrice: "",
       discount: "",
       installmentsNumber: "",
-      installmentsValue: "",
-      price: "",
       deliveryDate: "",
       quantity: "",
       brand: "",
@@ -96,12 +92,10 @@ export function ProductRegister() {
           body: JSON.stringify({
             name: values.name,
             description: values.description,
-            previousPrice: values.previousPrice,
+            priceWithoutDiscount: values.priceWithoutDiscount,
             currentPrice: values.currentPrice,
             discount: values.discount,
             installmentsNumber: values.installmentsNumber,
-            installmentsValue: values.installmentsValue,
-            price: values.price,
             deliveryDate: values.deliveryDate,
             quantity: values.quantity,
             brand: values.brand,
@@ -158,31 +152,22 @@ export function ProductRegister() {
             />
 
             <Number
-              label="Preço anterior"
-              id="previousPrice"
+              label="Preço sem desconto (original)"
+              id="priceWithoutDiscount"
               placeholder="R$ 120,00"
               onChange={formik.handleChange}
-              value={formik.values.previousPrice}
+              value={formik.values.priceWithoutDiscount}
               error={
-                formik.touched.previousPrice && formik.errors.previousPrice
+                formik.touched.priceWithoutDiscount &&
+                formik.errors.priceWithoutDiscount
               }
-              onBlur={formik.handleBlur}
-            />
-
-            <Number
-              label="Preço atual"
-              id="currentPrice"
-              placeholder="R$ 150,00"
-              onChange={formik.handleChange}
-              value={formik.values.currentPrice}
-              error={formik.touched.currentPrice && formik.errors.currentPrice}
               onBlur={formik.handleBlur}
             />
 
             <Number
               label="Desconto"
               id="discount"
-              placeholder="R$ 10,00"
+              placeholder="10 %"
               onChange={formik.handleChange}
               value={formik.values.discount}
               error={formik.touched.discount && formik.errors.discount}
@@ -199,29 +184,6 @@ export function ProductRegister() {
                 formik.touched.installmentsNumber &&
                 formik.errors.installmentsNumber
               }
-              onBlur={formik.handleBlur}
-            />
-
-            <Number
-              label="Valor de cada parcela"
-              id="installmentsValue"
-              placeholder="R$ 30,00"
-              onChange={formik.handleChange}
-              value={formik.values.installmentsValue}
-              error={
-                formik.touched.installmentsValue &&
-                formik.errors.installmentsValue
-              }
-              onBlur={formik.handleBlur}
-            />
-
-            <Number
-              label="Valor à vista"
-              id="price"
-              placeholder="R$ 140,00"
-              onChange={formik.handleChange}
-              value={formik.values.price}
-              error={formik.touched.price && formik.errors.price}
               onBlur={formik.handleBlur}
             />
 
