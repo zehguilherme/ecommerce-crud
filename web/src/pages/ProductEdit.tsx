@@ -48,32 +48,22 @@ export function ProductEdit() {
             />
 
             <Number
-              label="Preço anterior"
-              id="previous-price"
+              label="Preço sem desconto (original)"
+              id="priceWithoutDiscount"
               placeholder="R$ 120,00"
+              onChange={() => {}}
               value=""
               error=""
-              onChange={() => {}}
-              onBlur={() => {}}
-            />
-
-            <Number
-              label="Preço atual"
-              id="current-price"
-              placeholder="R$ 150,00"
-              value=""
-              error=""
-              onChange={() => {}}
               onBlur={() => {}}
             />
 
             <Number
               label="Desconto"
               id="discount"
-              placeholder="R$ 10,00"
+              placeholder="10 %"
+              onChange={() => {}}
               value=""
               error=""
-              onChange={() => {}}
               onBlur={() => {}}
             />
 
@@ -81,26 +71,6 @@ export function ProductEdit() {
               label="Quantidade de Parcelas"
               id="installments-number"
               placeholder="12"
-              value=""
-              error=""
-              onChange={() => {}}
-              onBlur={() => {}}
-            />
-
-            <Number
-              label="Valor de cada parcela"
-              id="installments-value"
-              placeholder="R$ 30,00"
-              value=""
-              error=""
-              onChange={() => {}}
-              onBlur={() => {}}
-            />
-
-            <Number
-              label="Valor à vista"
-              id="R$ 140,00"
-              placeholder="R$ 140,00"
               value=""
               error=""
               onChange={() => {}}

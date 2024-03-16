@@ -4,5 +4,8 @@ export type ProductProps = {
   name: string;
   description: string;
   price: number;
+  priceWithoutDiscount: number;
+  priceWithDiscount: number;
   discount: number;
+  installmentsNumber: number;
 };

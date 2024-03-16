@@ -97,7 +97,10 @@ export function Home() {
                 name={product.name}
                 description={product.description}
                 price={product.price}
+                priceWithoutDiscount={product.priceWithoutDiscount}
+                priceWithDiscount={product.priceWithDiscount}
                 discount={product.discount}
+                installmentsNumber={product.installmentsNumber}
               />
             ))}
           </section>

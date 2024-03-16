@@ -8,26 +8,15 @@ export function Product({
   image,
   name,
   description,
-  price,
+  priceWithDiscount,
+  priceWithoutDiscount,
   discount,
+  installmentsNumber,
 }: ProductProps) {
   function convertPointValueToCommaValue(pointValue: number): string {
     const commaValue = pointValue.toString().replace(/\./g, ",");
 
     return commaValue;
-  }
-
-  function convertPercentageNumberToDecimalNumber(
-    percentageNumber: number
-  ): number {
-    return percentageNumber / 100;
-  }
-
-  function calculatePriceWithoutDiscount(): string {
-    return (
-      price /
-      (1 - convertPercentageNumberToDecimalNumber(discount))
-    ).toFixed(2);
   }
 
   return (
@@ -50,15 +39,12 @@ export function Product({
         <main className="flex flex-col gap-[10px]">
           <div className="flex flex-col gap-[5px]">
             <span className="text-sm text-gray-gray2 font-normal line-through">
-              R${" "}
-              {convertPointValueToCommaValue(
-                Number(calculatePriceWithoutDiscount())
-              )}
+              R$ {priceWithoutDiscount}
             </span>
 
             <div className="flex items-center gap-[10px]">
               <span className="text-black-black4 text-2xl font-medium">
-                R$ {price}
+                R$ {convertPointValueToCommaValue(priceWithDiscount)}
               </span>
 
               <span className="text-green-green1 text-sm font-normal">
@@ -70,7 +56,9 @@ export function Product({
               em
               <span className="text-green-green1">
                 {" "}
-                10x R$ {convertPointValueToCommaValue(price / 10)} sem juros
+                {installmentsNumber}x R${" "}
+                {convertPointValueToCommaValue(priceWithDiscount / 10)} sem
+                juros
               </span>{" "}
             </span>
           </div>
@@ -87,7 +75,7 @@ export function Product({
             </span>
 
             <span className="text-black-black4 text-sm font-normal">
-              R$ {price} (à vista)
+              R$ {priceWithDiscount} (à vista)
             </span>
           </div>
         </main>
