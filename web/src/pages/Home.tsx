@@ -96,11 +96,16 @@ export function Home() {
                 image={product.image}
                 name={product.name}
                 description={product.description}
-                price={product.price}
                 priceWithoutDiscount={product.priceWithoutDiscount}
                 priceWithDiscount={product.priceWithDiscount}
                 discount={product.discount}
                 installmentsNumber={product.installmentsNumber}
+                created_at={product.created_at}
+                brand={product.brand}
+                category={product.category}
+                deliveryDate={product.deliveryDate}
+                installmentsValue={product.installmentsValue}
+                quantity={product.quantity}
               />
             ))}
           </section>
