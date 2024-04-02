@@ -12,6 +12,22 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+type ProductFormData = {
+  created_at: string;
+  name: string;
+  description: string;
+  priceWithoutDiscount: number;
+  priceWithDiscount: number;
+  discount: number;
+  installmentsNumber: number;
+  installmentsValue: number;
+  deliveryDate: string;
+  quantity: number;
+  brand: string;
+  category: string;
+  image: string;
+};
+
 export function ProductRegister() {
   const [categories, setCategories] = useState(Array<string>);
 
@@ -21,7 +37,7 @@ export function ProductRegister() {
     });
   }
 
-  function productRegisteredUnsuccessfully() {
+  function productNotRegistered() {
     return toast(`Erro ao enviar cadastrar o produto!`, {
       type: "error",
     });
@@ -72,6 +88,23 @@ export function ProductRegister() {
     }
   }
 
+  function calculatePriceWithDiscount(
+    priceWithoutDiscount: string,
+    discount: string
+  ): number {
+    return parseInt(priceWithoutDiscount) - parseInt(discount);
+  }
+
+  function calculateInstallmentsValue(
+    priceWithDiscount: string,
+    installmentsNumber: string
+  ): number {
+    const installmentsValue =
+      parseInt(priceWithDiscount) / parseInt(installmentsNumber);
+
+    return parseFloat(installmentsValue.toFixed(2));
+  }
+
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -80,7 +113,6 @@ export function ProductRegister() {
     name: Yup.string().required("O campo é obrigatório!"),
     description: Yup.string().required("O campo é obrigatório!"),
     priceWithoutDiscount: Yup.string().required("O campo é obrigatório!"),
-    currentPrice: Yup.string().required("O campo é obrigatório!"),
     discount: Yup.string().required("O campo é obrigatório!"),
     installmentsNumber: Yup.string().required("O campo é obrigatório!"),
     deliveryDate: Yup.date().required("O campo é obrigatório!"),
@@ -95,7 +127,6 @@ export function ProductRegister() {
       name: "",
       description: "",
       priceWithoutDiscount: "",
-      currentPrice: "",
       discount: "",
       installmentsNumber: "",
       deliveryDate: "",
@@ -107,35 +138,56 @@ export function ProductRegister() {
     validationSchema: ProductSchema,
     onSubmit: async (values) => {
       try {
-        const response = await fetch("https://dummyjson.com/products/add", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: values.name,
-            description: values.description,
-            priceWithoutDiscount: values.priceWithoutDiscount,
-            currentPrice: values.currentPrice,
-            discount: values.discount,
-            installmentsNumber: values.installmentsNumber,
-            deliveryDate: values.deliveryDate,
-            quantity: values.quantity,
-            brand: values.brand,
-            category: values.category,
-            image: values.image,
-          }),
-        });
+        const productData: ProductFormData = {
+          created_at: `${new Date().toISOString()}`,
+          name: values.name,
+          description: values.description,
+          priceWithoutDiscount: parseInt(values.priceWithoutDiscount),
+          priceWithDiscount: calculatePriceWithDiscount(
+            values.priceWithoutDiscount,
+            values.discount
+          ),
+          discount: parseInt(values.discount),
+          installmentsNumber: parseInt(values.installmentsNumber),
+          installmentsValue: calculateInstallmentsValue(
+            calculatePriceWithDiscount(
+              values.priceWithoutDiscount,
+              values.discount
+            ).toString(),
+            values.installmentsNumber
+          ),
+          deliveryDate: `${new Date(values.deliveryDate).toISOString()}`,
+          quantity: parseInt(values.quantity),
+          brand: values.brand,
+          category: values.category,
+          image: values.image,
+        };
 
-        const newProduct = await response.json();
+        const response = await fetch(
+          `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: import.meta.env.VITE_SUPABASE_KEY,
+            },
+            body: JSON.stringify(productData),
+          }
+        );
 
-        console.log(newProduct);
+        if (!response.ok) {
+          productNotRegistered();
+
+          return;
+        }
 
         productRegisteredSuccessfully();
 
         formik.resetForm();
       } catch (error) {
-        console.log("Erro ao enviar cadastrar o produto!");
+        console.log(error);
 
-        productRegisteredUnsuccessfully();
+        productNotRegistered();
       }
     },
   });
