@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { Header } from "../components/Header";
-import { Date } from "../components/inputs/Date";
+import { DateTime } from "../components/inputs/DateTime";
 import { Number } from "../components/inputs/Number";
 import { Select } from "../components/inputs/Select";
 import { Text } from "../components/inputs/Text";
@@ -77,7 +77,7 @@ export function ProductEdit() {
               onBlur={() => {}}
             />
 
-            <Date
+            <DateTime
               label="Date de entrega (Prevista)"
               id="delivery-date"
               placeholder="26/02/2024"

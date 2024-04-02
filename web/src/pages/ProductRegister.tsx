@@ -1,5 +1,5 @@
 import { Header } from "../components/Header";
-import { Date } from "../components/inputs/Date";
+import { DateTime } from "../components/inputs/DateTime";
 import { Number } from "../components/inputs/Number";
 import { Select } from "../components/inputs/Select";
 import { Text } from "../components/inputs/Text";
@@ -208,7 +208,7 @@ export function ProductRegister() {
               onBlur={formik.handleBlur}
             />
 
-            <Date
+            <DateTime
               label="Date de entrega (Prevista)"
               id="deliveryDate"
               placeholder="26/02/2024"
