@@ -1,11 +1,16 @@
 export type ProductProps = {
   id: number;
-  image: string;
+  created_at: Date;
   name: string;
   description: string;
-  price: number;
   priceWithoutDiscount: number;
   priceWithDiscount: number;
   discount: number;
   installmentsNumber: number;
+  installmentsValue: number;
+  deliveryDate: Date;
+  quantity: number;
+  brand: string;
+  category: string;
+  image: string;
 };

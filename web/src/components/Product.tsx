@@ -22,16 +22,24 @@ export function Product({
   return (
     <article className="border-gray-gray5 border rounded-[10px] max-w-[285px] max-h-[596px]">
       <figure className="p-5 border-b border-gray-gray5 flex items-center justify-center">
-        <img
-          src={image}
-          alt={description}
-          className="w-full h-[245px] object-cover object-center"
-        />
+        {image.includes("https://") ? (
+          <img
+            src={image}
+            alt={description}
+            className="w-full h-[245px] object-cover object-center"
+          />
+        ) : (
+          <div className="w-full h-[245px] flex justify-center items-center">
+            <span className="text-gray-gray2 text-center">
+              Nenhuma imagem a ser exibida
+            </span>
+          </div>
+        )}
       </figure>
 
       <section className="p-5 flex flex-col gap-[10px] justify-between">
         <header>
-          <h2 className="font-normal text-black-black4 text-base line-clamp-2">
+          <h2 className="font-normal text-black-black4 text-base line-clamp-2 min-h-[33.78px]">
             {name} - {description}
           </h2>
         </header>
@@ -39,12 +47,18 @@ export function Product({
         <main className="flex flex-col gap-[10px]">
           <div className="flex flex-col gap-[5px]">
             <span className="text-sm text-gray-gray2 font-normal line-through">
-              R$ {priceWithoutDiscount}
+              R${" "}
+              {convertPointValueToCommaValue(
+                parseFloat(priceWithoutDiscount.toFixed(2))
+              )}
             </span>
 
             <div className="flex items-center gap-[10px]">
               <span className="text-black-black4 text-2xl font-medium">
-                R$ {convertPointValueToCommaValue(priceWithDiscount)}
+                R${" "}
+                {convertPointValueToCommaValue(
+                  parseFloat(priceWithDiscount.toFixed(2))
+                )}
               </span>
 
               <span className="text-green-green1 text-sm font-normal">
@@ -57,8 +71,10 @@ export function Product({
               <span className="text-green-green1">
                 {" "}
                 {installmentsNumber}x R${" "}
-                {convertPointValueToCommaValue(priceWithDiscount / 10)} sem
-                juros
+                {convertPointValueToCommaValue(
+                  parseFloat((priceWithDiscount / 10).toFixed(2))
+                )}{" "}
+                sem juros
               </span>{" "}
             </span>
           </div>
@@ -75,7 +91,11 @@ export function Product({
             </span>
 
             <span className="text-black-black4 text-sm font-normal">
-              R$ {priceWithDiscount} (à vista)
+              R${" "}
+              {convertPointValueToCommaValue(
+                parseFloat(priceWithDiscount.toFixed(2))
+              )}{" "}
+              (à vista)
             </span>
           </div>
         </main>
