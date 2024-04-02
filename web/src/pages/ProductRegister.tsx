@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 type ProductFormData = {
   created_at: string;
@@ -30,6 +31,8 @@ type ProductFormData = {
 
 export function ProductRegister() {
   const [categories, setCategories] = useState(Array<string>);
+
+  const navigate = useNavigate();
 
   function productRegisteredSuccessfully() {
     return toast(`Produto cadastrado com sucesso!`, {
@@ -184,6 +187,8 @@ export function ProductRegister() {
         productRegisteredSuccessfully();
 
         formik.resetForm();
+
+        navigate("/");
       } catch (error) {
         console.log(error);
 
