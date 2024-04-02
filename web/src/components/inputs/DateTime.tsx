@@ -11,7 +11,7 @@ type DateProps = {
   error: string | boolean | undefined;
 };
 
-export function Date({
+export function DateTime({
   label,
   id,
   placeholder,
