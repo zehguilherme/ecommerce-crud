@@ -6,6 +6,7 @@ import { Select } from "../components/inputs/Select";
 import { Product } from "../components/Product";
 import { ProductProps } from "../models/ProductProps";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 export function Home() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
@@ -17,6 +18,69 @@ export function Home() {
 
   function handleOrderbyChange(event: ChangeEvent<HTMLSelectElement>) {
     setOrderbySelectedOption(event.target.value);
+  }
+
+  function productDeletedSuccessfully() {
+    return toast(`Produto excluído com sucesso!`, {
+      type: "success",
+    });
+  }
+
+  function productNotDeleted() {
+    return toast(`Erro ao excluir o produto!`, {
+      type: "error",
+    });
+  }
+
+  async function fetchProduct(productId: number): Promise<number> {
+    const response = await fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products?id=eq.${productId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: import.meta.env.VITE_SUPABASE_KEY,
+        },
+      }
+    );
+
+    const productsArray = await response.json();
+    const { id }: ProductProps = productsArray[0];
+
+    return id;
+  }
+
+  async function deleteProduct(productId: number) {
+    await fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products?id=eq.${productId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: import.meta.env.VITE_SUPABASE_KEY,
+        },
+      }
+    );
+  }
+
+  async function handleDeleteProduct(productId: number, productName: string) {
+    const productDeleteIsConfirmed = confirm(
+      `Deseja realmente excluir o produto ${productName}?`
+    );
+
+    try {
+      if (productDeleteIsConfirmed) {
+        const responseProductId = await fetchProduct(productId);
+
+        await deleteProduct(responseProductId);
+
+        productDeletedSuccessfully();
+
+        fetchProductsData();
+      }
+    } catch (error) {
+      productNotDeleted();
+    }
   }
 
   async function fetchProductsData() {
@@ -32,8 +96,6 @@ export function Home() {
     );
 
     const products = await response.json();
-
-    console.log(products);
 
     setProducts(products);
   }
@@ -106,11 +168,14 @@ export function Home() {
                 deliveryDate={product.deliveryDate}
                 installmentsValue={product.installmentsValue}
                 quantity={product.quantity}
+                onClick={() => handleDeleteProduct(product.id, product.name)}
               />
             ))}
           </section>
         </div>
       </main>
+
+      <ToastContainer />
     </div>
   );
 }
