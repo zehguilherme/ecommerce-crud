@@ -13,4 +13,5 @@ export type ProductProps = {
   brand: string;
   category: string;
   image: string;
+  onClick: () => void;
 };

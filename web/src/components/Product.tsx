@@ -12,6 +12,7 @@ export function Product({
   priceWithoutDiscount,
   discount,
   installmentsNumber,
+  onClick,
 }: ProductProps) {
   function convertPointValueToCommaValue(pointValue: number): string {
     const commaValue = pointValue.toString().replace(/\./g, ",");
@@ -105,9 +106,9 @@ export function Product({
             <Pencil className="w-6 h-6 text-gray-gray3" />
           </Link>
 
-          <Link to="">
+          <button type="button" onClick={onClick}>
             <Trash className="w-6 h-6 text-red-red1" />
-          </Link>
+          </button>
         </footer>
       </section>
     </article>
