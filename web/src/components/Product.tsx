@@ -103,11 +103,11 @@ export function Product({
 
         <footer className="flex justify-center gap-[70px] items-center p-[10px]">
           <Link to={`/produto/editar/${id}`}>
-            <Pencil className="w-6 h-6 text-gray-gray3" />
+            <Pencil className="w-6 h-6 text-gray-gray3 hover:opacity-75" />
           </Link>
 
           <button type="button" onClick={onClick}>
-            <Trash className="w-6 h-6 text-red-red1" />
+            <Trash className="w-6 h-6 text-red-red1 hover:opacity-75" />
           </button>
         </footer>
       </section>
