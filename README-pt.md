@@ -14,14 +14,14 @@
 
 ### Front-end
 
-- [ReactJS](https://react.dev/) - Library for building interfaces using components
+- [ReactJS](https://react.dev/) - Biblioteca para construção de interfaces usando componentes
 - [TypeScript](https://www.typescriptlang.org/)
 - [Google Fonts](https://fonts.google.com/)
-- [TailwindCSS](https://tailwindcss.com/) - CSS framework
-- [React Router](https://reactrouter.com/en/main) - Application route management
-- [React-Toastify](https://www.npmjs.com/package/react-toastify) - Notifications display component
-- [Formik](https://formik.org/) - Form Management Library
-- [Yup](https://github.com/jquense/yup) - Schema (data schema) builder for runtime value parsing and validation
+- [TailwindCSS](https://tailwindcss.com/) - Framework CSS
+- [React Router](https://reactrouter.com/en/main) - Gerenciamento de rotas da aplicação
+- [React-Toastify](https://www.npmjs.com/package/react-toastify) - Componente de exibição de notificações
+- [Formik](https://formik.org/) - Biblioteca de gerenciamento de formulários
+- [Yup](https://github.com/jquense/yup) - Construtor de esqueleto de dados para análise e validação de valor em tempo de execução
 
 #### Layout
 
