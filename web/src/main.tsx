@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <ProductRegister />,
   },
   {
-    path: "/produto/editar",
+    path: "/produto/:productId",
     element: <ProductEdit />,
   },
 ]);

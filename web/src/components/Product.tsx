@@ -102,7 +102,7 @@ export function Product({
         </main>
 
         <footer className="flex justify-center gap-[70px] items-center p-[10px]">
-          <Link to={`/produto/editar/${id}`}>
+          <Link to={`/produto/${id}`}>
             <Pencil className="w-6 h-6 text-gray-gray3 hover:opacity-75" />
           </Link>
 
