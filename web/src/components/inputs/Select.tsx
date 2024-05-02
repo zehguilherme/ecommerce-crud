@@ -22,10 +22,8 @@ export function Select({
   error,
 }: SelectProps) {
   return (
-    <div className="flex flex-col gap-1">
-      <div
-        className={`border-gray-gray1 border-[1px] rounded-lg px-4 py-2 ${className}`}
-      >
+    <div className={`flex flex-col gap-1 ${className}`}>
+      <div className="border-gray-gray1 border-[1px] rounded-lg px-4 py-2">
         <div className="flex flex-col gap-[7px]">
           <label htmlFor={id} className="text-sm text-black-black1 font-normal">
             {label}
