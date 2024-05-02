@@ -219,8 +219,6 @@ export function ProductEdit() {
           }
         );
 
-        console.log(response);
-
         if (!response.ok) {
           productNotUpdated();
 

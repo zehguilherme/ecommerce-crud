@@ -190,8 +190,6 @@ export function ProductRegister() {
 
         navigate("/");
       } catch (error) {
-        console.log(error);
-
         productNotRegistered();
       }
     },
