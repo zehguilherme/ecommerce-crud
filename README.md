@@ -1,5 +1,5 @@
 <h1 align="center">
-  E-commerce management
+  E-commerce product management
 </h1>
 
 ![Screenshot from Home page](./.github/img/home.png)
