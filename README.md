@@ -10,6 +10,10 @@
   <a href="README-pt.md">Português</a>
 </div>
 
+## 💬 Description
+
+This is an application that manages a list of products from a fictitious e-commerce aimed at learning/training the main operations carried out on data in a web application. These operations are: creating, reading, updating and deleting information.
+
 ## 🚀 Technologies
 
 ### Front-end
