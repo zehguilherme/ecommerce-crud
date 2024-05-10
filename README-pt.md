@@ -36,7 +36,7 @@ Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fict
 
 - API gerada via [Supabase](https://supabase.com/)
 
-## 🚀 Getting started
+## 🚀 Começando
 
 Primeiro de tudo você precisa ter `node` e `npm` (ou `yarn`) instalados em sua máquina.
 
