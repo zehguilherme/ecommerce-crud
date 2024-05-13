@@ -48,7 +48,7 @@ Então você pode clonar o repositório.
   git clone https://github.com/zehguilherme/ecommerce-crud
 ```
 
-Start the application
+Inicie a aplicação
 
 1. `cd web`
 2. `npm install` ou `yarn`
