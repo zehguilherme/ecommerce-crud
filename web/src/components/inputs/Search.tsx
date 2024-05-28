@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { FormEvent } from "react";
 import { Magnifier } from "../icons/Magnifier";
 
 type SearchProps = {
@@ -6,7 +6,7 @@ type SearchProps = {
   placeholder?: string;
   id: string;
   className?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onInput?: (event: FormEvent<HTMLInputElement>) => void;
 };
 
 export function Search({
@@ -14,7 +14,7 @@ export function Search({
   placeholder,
   id,
   className,
-  onChange,
+  onInput,
   ...props
 }: SearchProps) {
   return (
@@ -34,7 +34,7 @@ export function Search({
           id={id}
           placeholder={placeholder}
           className="w-full font-normal"
-          onChange={onChange}
+          onInput={onInput}
           {...props}
         />
       </div>

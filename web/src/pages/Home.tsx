@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Plus } from "../components/icons/Plus";
 import { Search } from "../components/inputs/Search";
@@ -10,10 +10,28 @@ import { toast, ToastContainer } from "react-toastify";
 
 export function Home() {
   const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
-  const [products, setProducts] = useState(Array<ProductProps>);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState(Array<ProductProps>);
+  const [apiProducts, setApiProducts] = useState(Array<ProductProps>);
 
-  function handleSearchInputChange(event: ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.value);
+  function handleSearchInputChange(event: FormEvent<HTMLInputElement>) {
+    setSearchInput(event.currentTarget.value.toLowerCase());
+
+    if (searchInput !== "") {
+      const filteredProducts = apiProducts.filter((product) => {
+        return (
+          product.name.toLowerCase().includes(searchInput) ||
+          product.description.toLowerCase().includes(searchInput) ||
+          product.priceWithDiscount.toString().includes(searchInput) ||
+          product.priceWithoutDiscount.toString().includes(searchInput) ||
+          product.discount.toString().toLowerCase().includes(searchInput)
+        );
+      });
+
+      setFilteredProducts(filteredProducts);
+    } else {
+      setFilteredProducts(apiProducts);
+    }
   }
 
   function handleOrderbyChange(event: ChangeEvent<HTMLSelectElement>) {
@@ -97,7 +115,7 @@ export function Home() {
 
     const products = await response.json();
 
-    setProducts(products);
+    setApiProducts(products);
   }
 
   useEffect(() => {
@@ -115,7 +133,7 @@ export function Home() {
               label="Pesquisar"
               placeholder="Procurando por algo específico?"
               id="product-search"
-              onChange={handleSearchInputChange}
+              onInput={handleSearchInputChange}
               className="w-full md:max-w-[375px]"
             />
 
@@ -151,26 +169,51 @@ export function Home() {
           </Link>
 
           <section className="flex flex-col items-center gap-8 sm:gap-5 sm:grid sm:place-items-stretch sm:grid-cols-2 md:grid-cols-3 max-w-[895px]">
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                id={product.id}
-                image={product.image}
-                name={product.name}
-                description={product.description}
-                priceWithoutDiscount={product.priceWithoutDiscount}
-                priceWithDiscount={product.priceWithDiscount}
-                discount={product.discount}
-                installmentsNumber={product.installmentsNumber}
-                created_at={product.created_at}
-                brand={product.brand}
-                category={product.category}
-                deliveryDate={product.deliveryDate}
-                installmentsValue={product.installmentsValue}
-                quantity={product.quantity}
-                onClick={() => handleDeleteProduct(product.id, product.name)}
-              />
-            ))}
+            {searchInput.length > 1
+              ? filteredProducts.map((product) => (
+                  <Product
+                    key={product.id}
+                    id={product.id}
+                    image={product.image}
+                    name={product.name}
+                    description={product.description}
+                    priceWithoutDiscount={product.priceWithoutDiscount}
+                    priceWithDiscount={product.priceWithDiscount}
+                    discount={product.discount}
+                    installmentsNumber={product.installmentsNumber}
+                    created_at={product.created_at}
+                    brand={product.brand}
+                    category={product.category}
+                    deliveryDate={product.deliveryDate}
+                    installmentsValue={product.installmentsValue}
+                    quantity={product.quantity}
+                    onClick={() =>
+                      handleDeleteProduct(product.id, product.name)
+                    }
+                  />
+                ))
+              : apiProducts.map((product) => (
+                  <Product
+                    key={product.id}
+                    id={product.id}
+                    image={product.image}
+                    name={product.name}
+                    description={product.description}
+                    priceWithoutDiscount={product.priceWithoutDiscount}
+                    priceWithDiscount={product.priceWithDiscount}
+                    discount={product.discount}
+                    installmentsNumber={product.installmentsNumber}
+                    created_at={product.created_at}
+                    brand={product.brand}
+                    category={product.category}
+                    deliveryDate={product.deliveryDate}
+                    installmentsValue={product.installmentsValue}
+                    quantity={product.quantity}
+                    onClick={() =>
+                      handleDeleteProduct(product.id, product.name)
+                    }
+                  />
+                ))}
           </section>
         </div>
       </main>
