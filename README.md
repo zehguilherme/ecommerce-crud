@@ -36,7 +36,7 @@ Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fict
 
 - API gerada via [Supabase](https://supabase.com/)
 
-## 🚀 Getting started
+## 🚀 Começando
 
 Primeiro de tudo você precisa ter `node` e `npm` (ou `yarn`) instalados em sua máquina.
 
@@ -48,7 +48,7 @@ Então você pode clonar o repositório.
   git clone https://github.com/zehguilherme/ecommerce-crud
 ```
 
-Start the application
+Inicie a aplicação
 
 1. `cd web`
 2. `npm install` ou `yarn`
