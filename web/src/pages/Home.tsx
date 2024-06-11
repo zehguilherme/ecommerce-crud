@@ -15,16 +15,25 @@ export function Home() {
   const [apiProducts, setApiProducts] = useState(Array<ProductProps>);
 
   function handleSearchInputChange(event: FormEvent<HTMLInputElement>) {
-    setSearchInput(event.currentTarget.value.toLowerCase());
+    const currentSearchInputValue = event.currentTarget.value;
 
-    if (searchInput !== "") {
+    setSearchInput(currentSearchInputValue.toLowerCase());
+
+    if (currentSearchInputValue !== "") {
       const filteredProducts = apiProducts.filter((product) => {
         return (
-          product.name.toLowerCase().includes(searchInput) ||
-          product.description.toLowerCase().includes(searchInput) ||
-          product.priceWithDiscount.toString().includes(searchInput) ||
-          product.priceWithoutDiscount.toString().includes(searchInput) ||
-          product.discount.toString().toLowerCase().includes(searchInput)
+          product.name.toLowerCase().includes(currentSearchInputValue) ||
+          product.description.toLowerCase().includes(currentSearchInputValue) ||
+          product.priceWithDiscount
+            .toString()
+            .includes(currentSearchInputValue) ||
+          product.priceWithoutDiscount
+            .toString()
+            .includes(currentSearchInputValue) ||
+          product.discount
+            .toString()
+            .toLowerCase()
+            .includes(currentSearchInputValue)
         );
       });
 
