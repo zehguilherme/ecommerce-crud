@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ProductProps } from "../models/ProductProps";
 import { Pencil } from "./icons/Pencil";
 import { Trash } from "./icons/Trash";
+import { Box } from "./icons/Box";
 
 export function Product({
   id,
@@ -30,10 +31,10 @@ export function Product({
             className="w-full h-[245px] object-cover object-center"
           />
         ) : (
-          <div className="w-full h-[245px] flex justify-center items-center">
-            <span className="text-gray-gray2 text-center">
-              Nenhuma imagem a ser exibida
-            </span>
+          <div className="w-full h-[245px] flex flex-col justify-center items-center gap-5 text-gray-gray2">
+            <Box className="w-12 h-auto" />
+
+            <span className="text-center">Imagem não encontrada</span>
           </div>
         )}
       </figure>
