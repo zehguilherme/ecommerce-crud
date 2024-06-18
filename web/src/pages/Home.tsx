@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 export function Home() {
-  const [orderbySelectedOption, setOrderbySelectedOption] = useState("");
+  const [orderbyInput, setOrderbyInput] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(Array<ProductProps>);
   const [apiProducts, setApiProducts] = useState(Array<ProductProps>);
@@ -18,33 +18,38 @@ export function Home() {
     const currentSearchInputValue = event.currentTarget.value;
 
     setSearchInput(currentSearchInputValue.toLowerCase());
-
-    if (currentSearchInputValue !== "") {
-      const filteredProducts = apiProducts.filter((product) => {
-        return (
-          product.name.toLowerCase().includes(currentSearchInputValue) ||
-          product.description.toLowerCase().includes(currentSearchInputValue) ||
-          product.priceWithDiscount
-            .toString()
-            .includes(currentSearchInputValue) ||
-          product.priceWithoutDiscount
-            .toString()
-            .includes(currentSearchInputValue) ||
-          product.discount
-            .toString()
-            .toLowerCase()
-            .includes(currentSearchInputValue)
-        );
-      });
-
-      setFilteredProducts(filteredProducts);
-    } else {
-      setFilteredProducts(apiProducts);
-    }
   }
 
   function handleOrderbyChange(event: ChangeEvent<HTMLSelectElement>) {
-    setOrderbySelectedOption(event.target.value);
+    const currentOrderbyInputValue = event.target.value;
+
+    setOrderbyInput(currentOrderbyInputValue);
+  }
+
+  function getFilteredProducts() {
+    let filteredProducts = apiProducts.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(searchInput) ||
+        product.description.toLowerCase().includes(searchInput) ||
+        product.priceWithDiscount.toString().includes(searchInput) ||
+        product.priceWithoutDiscount.toString().includes(searchInput) ||
+        product.discount.toString().toLowerCase().includes(searchInput)
+      );
+    });
+
+    if (orderbyInput === "lowestValue") {
+      filteredProducts = filteredProducts.sort((productA, productB) => {
+        return productA.priceWithDiscount - productB.priceWithDiscount;
+      });
+    }
+
+    if (orderbyInput === "biggestValue") {
+      filteredProducts = filteredProducts.sort((productA, productB) => {
+        return productB.priceWithDiscount - productA.priceWithDiscount;
+      });
+    }
+
+    return filteredProducts;
   }
 
   function productDeletedSuccessfully() {
@@ -131,6 +136,10 @@ export function Home() {
     fetchProductsData();
   }, []);
 
+  useEffect(() => {
+    setFilteredProducts(getFilteredProducts());
+  }, [orderbyInput, searchInput]);
+
   return (
     <div className="bg-white">
       <Header />
@@ -149,7 +158,7 @@ export function Home() {
             <Select
               label="Ordenar por"
               onChange={handleOrderbyChange}
-              value={orderbySelectedOption}
+              value={orderbyInput}
               className="w-full md:max-w-[375px]"
               id="orderby"
               error=""
@@ -178,7 +187,7 @@ export function Home() {
           </Link>
 
           <section className="flex flex-col items-center gap-8 sm:gap-5 sm:grid sm:place-items-stretch sm:grid-cols-2 md:grid-cols-3 max-w-[895px]">
-            {searchInput.length > 1
+            {filteredProducts.length > 0
               ? filteredProducts.map((product) => (
                   <Product
                     key={product.id}
