@@ -12,7 +12,7 @@
 
 ## 💬 Description
 
-This is an application that manages a list of products from a fictitious e-commerce aimed at learning/training the main operations carried out on data in a web application. These operations are: creating, reading, updating and deleting information.
+This is an application that manages a list of products from a fictitious e-commerce aimed at training the main operations carried out on data in a web application. These operations are: creating, reading, updating and deleting information.
 
 ## 🚀 Technologies
 

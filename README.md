@@ -12,7 +12,7 @@
 
 ## 💬 Descrição
 
-Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fictício visando o aprendizado/treinamento das principais operações realizadas sobre dados em uma aplicação web. Essas operações são: criação, leitura, atualização e exclusão de informações.
+Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fictício visando o treinamento das principais operações realizadas sobre dados em uma aplicação web. Essas operações são: criação, leitura, atualização e exclusão de informações.
 
 ## 🚀 Tecnologias
 
