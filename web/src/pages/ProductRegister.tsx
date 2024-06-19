@@ -324,9 +324,10 @@ export function ProductRegister() {
             />
 
             <Button
-              text="Cadastrar novo produto"
+              text={`${formik.isSubmitting ? "Cadastrando..." : "Cadastrar novo produto"}`}
               type="submit"
-              className="bg-green-green1 hover:bg-green-green3 text-white"
+              className="bg-green-green1 hover:bg-green-green3 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-green-green1 text-white"
+              disabled={!formik.isValid || formik.isSubmitting}
             />
           </form>
         </div>
