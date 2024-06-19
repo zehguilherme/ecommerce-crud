@@ -22,7 +22,7 @@ export function Product({
   }
 
   return (
-    <article className="border-gray-gray5 border rounded-[10px] max-w-[285px] max-h-[596px]">
+    <article className="border-gray-gray5 border rounded-[10px] w-[285px] sm:w-auto max-w-[285px] max-h-[596px]">
       <figure className="p-5 border-b border-gray-gray5 flex items-center justify-center">
         {image.includes("https://") ? (
           <img
@@ -39,9 +39,9 @@ export function Product({
         )}
       </figure>
 
-      <section className="p-5 flex flex-col gap-[10px] justify-between">
+      <section className="p-5 flex flex-col gap-[10px] justify-between h-[311px]">
         <header>
-          <h2 className="font-normal text-black-black4 text-base line-clamp-2 min-h-[33.78px]">
+          <h2 className="font-normal text-black-black4 text-base line-clamp-3 h-[51px]">
             {name} - {description}
           </h2>
         </header>
