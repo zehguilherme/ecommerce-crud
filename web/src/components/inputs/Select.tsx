@@ -32,7 +32,7 @@ export function Select({
           <select
             name={id}
             id={id}
-            className="relative left-[-4px] text-lg font-normal text-gray-gray2"
+            className="relative left-[-4px] text-lg font-normal text-black-black4"
             value={value}
             onChange={onChange}
             onBlur={onBlur}
