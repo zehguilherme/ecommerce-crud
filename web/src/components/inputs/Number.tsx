@@ -34,7 +34,7 @@ export function Number({
             id={id}
             name={id}
             placeholder={placeholder}
-            className={`text-lg font-normal text-gray-gray2 ${className}`}
+            className={`text-lg font-normal text-black-black4 ${className}`}
             onChange={onChange}
             value={value}
             onBlur={onBlur}

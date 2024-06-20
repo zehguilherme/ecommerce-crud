@@ -33,7 +33,7 @@ export function Search({
           name={id}
           id={id}
           placeholder={placeholder}
-          className="w-full font-normal"
+          className="w-full font-normal text-black-black4"
           onInput={onInput}
           {...props}
         />
