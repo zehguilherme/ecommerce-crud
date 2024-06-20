@@ -264,7 +264,7 @@ export function ProductRegister() {
             />
 
             <DateTime
-              label="Date de entrega (Prevista)"
+              label="Data de entrega (Prevista)"
               id="deliveryDate"
               placeholder="26/02/2024"
               onChange={formik.handleChange}
