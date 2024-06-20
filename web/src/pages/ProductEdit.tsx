@@ -245,9 +245,9 @@ export function ProductEdit() {
     <div className="bg-white">
       <Header />
 
-      <main className="max-w-[1200px] mx-auto px-6 sm:px-8 py-8">
-        <div className="sm:border sm:border-gray-gray5 sm:rounded-[20px] sm:px-[43px] sm:py-[37px] flex flex-col gap-10 max-w-[461px] mx-auto">
-          <h2 className="text-black-black2 font-normal text-3xl">
+      <main className="mx-auto max-w-[1200px] px-6 py-8 sm:px-8">
+        <div className="mx-auto flex max-w-[461px] flex-col gap-10 sm:rounded-[20px] sm:border sm:border-gray-gray5 sm:px-[43px] sm:py-[37px]">
+          <h2 className="text-3xl font-normal text-black-black2">
             Edite as informações do produto
           </h2>
 
@@ -375,7 +375,7 @@ export function ProductEdit() {
             <Button
               text={`${formik.isSubmitting ? "Salvando..." : "Salvar informações"}`}
               type="submit"
-              className="bg-green-green1 hover:bg-green-green3 text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-green-green1"
+              className="bg-green-green1 text-white hover:bg-green-green3 disabled:cursor-not-allowed disabled:bg-green-green1 disabled:opacity-50"
               disabled={!formik.isValid || formik.isSubmitting}
             />
           </form>

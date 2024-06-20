@@ -16,7 +16,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={`px-4 py-[17px] rounded-xl font-normal text-xl ${className}`}
+      className={`rounded-xl px-4 py-[17px] text-xl font-normal ${className}`}
       onClick={onClick}
       disabled={disabled}
     >

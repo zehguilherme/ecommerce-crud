@@ -4,7 +4,7 @@ import { Box } from "./icons/Box";
 export function Header() {
   return (
     <header className="bg-purple">
-      <nav className="flex justify-between items-center p-6 xl:px-0 max-w-[1200px] mx-auto">
+      <nav className="mx-auto flex max-w-[1200px] items-center justify-between p-6 xl:px-0">
         <h1>
           <Link to={"/"}>
             <Box className="text-white" />
