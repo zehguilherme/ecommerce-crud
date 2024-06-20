@@ -19,9 +19,9 @@ export function Search({
 }: SearchProps) {
   return (
     <div
-      className={`border-gray-gray1 border-[1px] rounded-lg px-4 py-[17px] flex items-center gap-x-4 ${className}`}
+      className={`flex items-center gap-x-4 rounded-lg border-[1px] border-gray-gray1 px-4 py-[17px] ${className}`}
     >
-      <Magnifier className="w-auto h-[19.22px] text-black-black3" />
+      <Magnifier className="h-[19.22px] w-auto text-black-black3" />
 
       <label htmlFor={id} className="sr-only">
         {label}

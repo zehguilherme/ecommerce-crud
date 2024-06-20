@@ -144,9 +144,9 @@ export function Home() {
     <div className="bg-white">
       <Header />
 
-      <main className="max-w-[1200px] mx-auto">
-        <div className="px-6 py-8 xl:px-0 flex flex-col items-center gap-8">
-          <div className="gap-8 flex flex-col w-full md:flex-row md:justify-between">
+      <main className="mx-auto max-w-[1200px]">
+        <div className="flex flex-col items-center gap-8 px-6 py-8 xl:px-0">
+          <div className="flex w-full flex-col gap-8 md:flex-row md:justify-between">
             <Search
               label="Pesquisar"
               placeholder="Procurando por algo específico?"
@@ -180,14 +180,14 @@ export function Home() {
 
           <Link
             to="/produto"
-            className="capitalize bg-green-green1 hover:bg-green-green3 px-4 py-[17px] rounded-xl w-full md:max-w-[375px] text-white font-normal text-xl flex justify-center items-center gap-5"
+            className="flex w-full items-center justify-center gap-5 rounded-xl bg-green-green1 px-4 py-[17px] text-xl font-normal capitalize text-white hover:bg-green-green3 md:max-w-[375px]"
             title="Adicionar produto"
           >
-            <Plus className="w-6 h-6" />
+            <Plus className="h-6 w-6" />
             Adicionar produto
           </Link>
 
-          <section className="flex flex-col items-center gap-8 sm:gap-5 sm:grid sm:place-items-stretch sm:grid-cols-2 md:grid-cols-3 max-w-[895px]">
+          <section className="flex max-w-[895px] flex-col items-center gap-8 sm:grid sm:grid-cols-2 sm:place-items-stretch sm:gap-5 md:grid-cols-3">
             {filteredProducts.length > 0
               ? filteredProducts.map((product) => (
                   <Product

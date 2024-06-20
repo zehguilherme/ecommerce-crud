@@ -23,16 +23,16 @@ export function Select({
 }: SelectProps) {
   return (
     <div className={`flex flex-col gap-1 ${className}`}>
-      <div className="border-gray-gray1 border-[1px] rounded-lg px-4 py-2">
+      <div className="rounded-lg border-[1px] border-gray-gray1 px-4 py-2">
         <div className="flex flex-col gap-[7px]">
-          <label htmlFor={id} className="text-sm text-black-black1 font-normal">
+          <label htmlFor={id} className="text-sm font-normal text-black-black1">
             {label}
           </label>
 
           <select
             name={id}
             id={id}
-            className="text-gray-gray2 font-normal text-lg relative left-[-4px]"
+            className="relative left-[-4px] text-lg font-normal text-gray-gray2"
             value={value}
             onChange={onChange}
             onBlur={onBlur}
@@ -43,7 +43,7 @@ export function Select({
       </div>
 
       {error && (
-        <span className="text-red-red1 font-normal text-sm">{error}</span>
+        <span className="text-sm font-normal text-red-red1">{error}</span>
       )}
     </div>
   );
