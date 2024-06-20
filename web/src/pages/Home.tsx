@@ -7,12 +7,20 @@ import { Product } from "../components/Product";
 import { ProductProps } from "../models/ProductProps";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { Spinner } from "../components/icons/Spinner";
 
 export function Home() {
   const [orderbyInput, setOrderbyInput] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(Array<ProductProps>);
   const [apiProducts, setApiProducts] = useState(Array<ProductProps>);
+  const [isLoadingProductsList, setIsLoadingProductsList] = useState(true);
+
+  function productsLoadedError() {
+    return toast(`Erro ao carregar os produtos!`, {
+      type: "error",
+    });
+  }
 
   function handleSearchInputChange(event: FormEvent<HTMLInputElement>) {
     const currentSearchInputValue = event.currentTarget.value;
@@ -116,20 +124,28 @@ export function Home() {
   }
 
   async function fetchProductsData() {
-    const response = await fetch(
-      `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: `${import.meta.env.VITE_SUPABASE_KEY}`,
-        },
-      }
-    );
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: `${import.meta.env.VITE_SUPABASE_KEY}`,
+          },
+        }
+      );
 
-    const products = await response.json();
+      const products = await response.json();
 
-    setApiProducts(products);
+      setApiProducts(products);
+
+      setIsLoadingProductsList(false);
+    } catch (error) {
+      productsLoadedError();
+
+      setIsLoadingProductsList(false);
+    }
   }
 
   useEffect(() => {
@@ -187,53 +203,57 @@ export function Home() {
             Adicionar produto
           </Link>
 
-          <section className="flex max-w-[895px] flex-col items-center gap-8 sm:grid sm:grid-cols-2 sm:place-items-stretch sm:gap-5 md:grid-cols-3">
-            {filteredProducts.length > 0
-              ? filteredProducts.map((product) => (
-                  <Product
-                    key={product.id}
-                    id={product.id}
-                    image={product.image}
-                    name={product.name}
-                    description={product.description}
-                    priceWithoutDiscount={product.priceWithoutDiscount}
-                    priceWithDiscount={product.priceWithDiscount}
-                    discount={product.discount}
-                    installmentsNumber={product.installmentsNumber}
-                    created_at={product.created_at}
-                    brand={product.brand}
-                    category={product.category}
-                    deliveryDate={product.deliveryDate}
-                    installmentsValue={product.installmentsValue}
-                    quantity={product.quantity}
-                    onClick={() =>
-                      handleDeleteProduct(product.id, product.name)
-                    }
-                  />
-                ))
-              : apiProducts.map((product) => (
-                  <Product
-                    key={product.id}
-                    id={product.id}
-                    image={product.image}
-                    name={product.name}
-                    description={product.description}
-                    priceWithoutDiscount={product.priceWithoutDiscount}
-                    priceWithDiscount={product.priceWithDiscount}
-                    discount={product.discount}
-                    installmentsNumber={product.installmentsNumber}
-                    created_at={product.created_at}
-                    brand={product.brand}
-                    category={product.category}
-                    deliveryDate={product.deliveryDate}
-                    installmentsValue={product.installmentsValue}
-                    quantity={product.quantity}
-                    onClick={() =>
-                      handleDeleteProduct(product.id, product.name)
-                    }
-                  />
-                ))}
-          </section>
+          {isLoadingProductsList ? (
+            <Spinner className="mt-4 h-10 w-10 animate-spin" />
+          ) : (
+            <section className="flex max-w-[895px] flex-col items-center justify-center gap-8 sm:grid sm:grid-cols-2 sm:place-items-stretch sm:gap-5 md:grid-cols-3">
+              {filteredProducts.length > 0
+                ? filteredProducts.map((product) => (
+                    <Product
+                      key={product.id}
+                      id={product.id}
+                      image={product.image}
+                      name={product.name}
+                      description={product.description}
+                      priceWithoutDiscount={product.priceWithoutDiscount}
+                      priceWithDiscount={product.priceWithDiscount}
+                      discount={product.discount}
+                      installmentsNumber={product.installmentsNumber}
+                      created_at={product.created_at}
+                      brand={product.brand}
+                      category={product.category}
+                      deliveryDate={product.deliveryDate}
+                      installmentsValue={product.installmentsValue}
+                      quantity={product.quantity}
+                      onClick={() =>
+                        handleDeleteProduct(product.id, product.name)
+                      }
+                    />
+                  ))
+                : apiProducts.map((product) => (
+                    <Product
+                      key={product.id}
+                      id={product.id}
+                      image={product.image}
+                      name={product.name}
+                      description={product.description}
+                      priceWithoutDiscount={product.priceWithoutDiscount}
+                      priceWithDiscount={product.priceWithDiscount}
+                      discount={product.discount}
+                      installmentsNumber={product.installmentsNumber}
+                      created_at={product.created_at}
+                      brand={product.brand}
+                      category={product.category}
+                      deliveryDate={product.deliveryDate}
+                      installmentsValue={product.installmentsValue}
+                      quantity={product.quantity}
+                      onClick={() =>
+                        handleDeleteProduct(product.id, product.name)
+                      }
+                    />
+                  ))}
+            </section>
+          )}
         </div>
       </main>
 
