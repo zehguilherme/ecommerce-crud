@@ -19,9 +19,9 @@ Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fict
 ### Front-end
 
 - [ReactJS](https://react.dev/) - Biblioteca para construção de interfaces usando componentes
-- [TypeScript](https://www.typescriptlang.org/)
-- [Google Fonts](https://fonts.google.com/)
-- [TailwindCSS](https://tailwindcss.com/) - Framework CSS
+- [TypeScript](https://www.typescriptlang.org/) - Conjunto de pacotes que adiciona tipagem estática à linguagem JavaScript
+- [Google Fonts](https://fonts.google.com/) - Biblioteca contendo diversas fontes
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS para estilização
 - [React Router](https://reactrouter.com/en/main) - Gerenciamento de rotas da aplicação
 - [React-Toastify](https://www.npmjs.com/package/react-toastify) - Componente de exibição de notificações
 - [Formik](https://formik.org/) - Biblioteca de gerenciamento de formulários
@@ -34,7 +34,7 @@ Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fict
 
 ### Back-end
 
-- API gerada via [Supabase](https://supabase.com/)
+- API REST gerada via [Supabase](https://supabase.com/)
 
 ## 🚀 Começando
 
