@@ -5,6 +5,7 @@ import { ProductRegister } from "./pages/ProductRegister.tsx";
 import { ProductEdit } from "./pages/ProductEdit.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import { NotFound } from "./pages/NotFound.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/produto/:productId",
     element: <ProductEdit />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
