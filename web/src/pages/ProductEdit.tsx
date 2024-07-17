@@ -234,6 +234,10 @@ export function ProductEdit() {
     },
   });
 
+  useEffect(() => {
+    formik.validateForm();
+  }, [formik.values]);
+
   const deliveryDateTimestamp = formik.values.deliveryDate;
   const date = new Date(deliveryDateTimestamp.toString());
   const year = date.getFullYear();

@@ -195,6 +195,10 @@ export function ProductRegister() {
     },
   });
 
+  useEffect(() => {
+    formik.validateForm();
+  }, [formik.values]);
+
   return (
     <div className="bg-white">
       <Header />
