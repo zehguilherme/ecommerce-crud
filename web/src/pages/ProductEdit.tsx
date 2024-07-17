@@ -375,7 +375,7 @@ export function ProductEdit() {
             <Button
               text={`${formik.isSubmitting ? "Salvando..." : "Salvar informações"}`}
               type="submit"
-              className="bg-green-green1 text-white hover:bg-green-green3 disabled:cursor-not-allowed disabled:bg-green-green1 disabled:opacity-50"
+              className="text-white bg-green-green1 hover:bg-green-green3 disabled:cursor-not-allowed disabled:bg-green-green1 disabled:opacity-50"
               disabled={!formik.isValid || formik.isSubmitting}
             />
           </form>
