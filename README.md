@@ -25,7 +25,7 @@ Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fict
 - [React Router](https://reactrouter.com/en/main) - Gerenciamento de rotas da aplicação
 - [React-Toastify](https://www.npmjs.com/package/react-toastify) - Componente de exibição de notificações
 - [Formik](https://formik.org/) - Biblioteca de gerenciamento de formulários
-- [Yup](https://github.com/jquense/yup) - Construtor de esqueleto de dados para análise e validação de valor em tempo de execução
+- [Yup](https://github.com/jquense/yup) - Biblioteca para validação de esquemas e dados
 
 #### Layout
 
