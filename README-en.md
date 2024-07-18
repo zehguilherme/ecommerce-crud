@@ -25,7 +25,7 @@ This is an application that manages a list of products from a fictitious e-comme
 - [React Router](https://reactrouter.com/en/main) - Application route management
 - [React-Toastify](https://www.npmjs.com/package/react-toastify) - Notifications display component
 - [Formik](https://formik.org/) - Form Management Library
-- [Yup](https://github.com/jquense/yup) - Schema (data schema) builder for runtime value parsing and validation
+- [Yup](https://github.com/jquense/yup) - Library for schema and data validation
 
 #### Layout
 
