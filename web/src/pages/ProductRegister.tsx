@@ -9,8 +9,7 @@ import { Button } from "../components/Button";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 type ProductFormData = {
@@ -41,7 +40,7 @@ export function ProductRegister() {
   }
 
   function productNotRegistered() {
-    return toast(`Erro ao enviar cadastrar o produto!`, {
+    return toast(`Erro ao cadastrar o produto!`, {
       type: "error",
     });
   }
@@ -336,8 +335,6 @@ export function ProductRegister() {
           </form>
         </div>
       </main>
-
-      <ToastContainer />
     </div>
   );
 }

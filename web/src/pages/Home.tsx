@@ -6,7 +6,7 @@ import { Select } from "../components/inputs/Select";
 import { Product } from "../components/Product";
 import { ProductProps } from "../models/ProductProps";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { Spinner } from "../components/icons/Spinner";
 
 export function Home() {
@@ -256,8 +256,6 @@ export function Home() {
           )}
         </div>
       </main>
-
-      <ToastContainer />
     </div>
   );
 }
