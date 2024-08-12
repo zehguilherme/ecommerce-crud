@@ -9,7 +9,7 @@ import { File } from "../components/inputs/File";
 import { Button } from "../components/Button";
 import { ProductProps } from "../models/ProductProps";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -78,7 +78,7 @@ export function ProductEdit() {
   }
 
   function productUpdatedSuccessfully() {
-    return toast(`Produto atualizado com sucesso!`, {
+    return toast(`As informações do produto foram atualizadas com sucesso!`, {
       type: "success",
     });
   }
@@ -385,8 +385,6 @@ export function ProductEdit() {
           </form>
         </div>
       </main>
-
-      <ToastContainer />
     </div>
   );
 }
