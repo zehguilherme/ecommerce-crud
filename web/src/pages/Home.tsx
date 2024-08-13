@@ -4,7 +4,7 @@ import { Plus } from "../components/icons/Plus";
 import { Search } from "../components/inputs/Search";
 import { Select } from "../components/inputs/Select";
 import { Product } from "../components/Product";
-import { ProductProps } from "../models/ProductProps";
+import { ProductProps } from "../schemas/ProductProps";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Spinner } from "../components/icons/Spinner";
