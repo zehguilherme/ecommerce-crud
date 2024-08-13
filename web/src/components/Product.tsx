@@ -46,7 +46,7 @@ export function Product({
           </h2>
         </header>
 
-        <main className="flex flex-col gap-[10px]">
+        <main className="flex flex-col items-start gap-[10px]">
           <div className="flex flex-col gap-[5px]">
             <span className="text-sm font-normal text-gray-gray2 line-through">
               R${" "}
@@ -81,11 +81,11 @@ export function Product({
             </span>
           </div>
 
-          <span className="max-w-[181px] bg-green-green2 px-[5px] py-[2px] text-sm font-semibold text-green-green1">
+          <span className="bg-green-green2 px-[5px] py-[2px] text-sm font-semibold text-green-green1">
             Chegará grátis segunda-feira
           </span>
 
-          <span className="border border-gray-gray5"></span>
+          <span className="w-full border border-gray-gray5"></span>
 
           <div className="flex flex-col gap-[10px]">
             <span className="text-sm font-normal text-gray-gray2">
