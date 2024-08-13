@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ProductProps } from "../models/ProductProps";
+import { ProductProps } from "../schemas/ProductProps";
 import { Pencil } from "./icons/Pencil";
 import { Trash } from "./icons/Trash";
 import { Box } from "./icons/Box";

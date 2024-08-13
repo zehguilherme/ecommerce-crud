@@ -7,7 +7,7 @@ import { Text } from "../components/inputs/Text";
 import { TextArea } from "../components/inputs/TextArea";
 import { File } from "../components/inputs/File";
 import { Button } from "../components/Button";
-import { ProductProps } from "../models/ProductProps";
+import { ProductProps } from "../schemas/ProductProps";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
