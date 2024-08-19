@@ -8,6 +8,7 @@ import { ProductProps } from "../schemas/ProductProps";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Spinner } from "../components/icons/Spinner";
+import { Box } from "../components/icons/Box";
 
 export function Home() {
   const [orderbyInput, setOrderbyInput] = useState("");
@@ -202,6 +203,12 @@ export function Home() {
 
           {isLoadingProductsList ? (
             <Spinner className="mt-4 h-10 w-10 animate-spin" />
+          ) : products.length === 0 || filteredProducts.length === 0 ? (
+            <div className="flex h-full w-full flex-col items-center justify-center gap-5">
+              <Box className="h-12 w-12" />
+
+              <h2 className="text-center">Nenhum produto encontrado!</h2>
+            </div>
           ) : (
             <section className="flex max-w-[895px] flex-col items-center justify-center gap-8 sm:grid sm:grid-cols-2 sm:place-items-stretch sm:gap-5 md:grid-cols-3">
               {filteredProducts.map((product) => (
