@@ -12,8 +12,7 @@ import { Spinner } from "../components/icons/Spinner";
 export function Home() {
   const [orderbyInput, setOrderbyInput] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(Array<ProductProps>);
-  const [apiProducts, setApiProducts] = useState(Array<ProductProps>);
+  const [products, setProducts] = useState(Array<ProductProps>);
   const [isLoadingProductsList, setIsLoadingProductsList] = useState(true);
 
   function productsLoadedError() {
@@ -35,7 +34,7 @@ export function Home() {
   }
 
   function getFilteredProducts() {
-    let filteredProducts = apiProducts.filter((product) => {
+    let filteredProducts = products.filter((product) => {
       return (
         product.name.toLowerCase().includes(searchInput) ||
         product.description.toLowerCase().includes(searchInput) ||
@@ -90,6 +89,31 @@ export function Home() {
     return id;
   }
 
+  async function fetchProductsData() {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: `${import.meta.env.VITE_SUPABASE_KEY}`,
+          },
+        }
+      );
+
+      const products = await response.json();
+
+      setProducts(products);
+
+      setIsLoadingProductsList(false);
+    } catch (error) {
+      productsLoadedError();
+
+      setIsLoadingProductsList(false);
+    }
+  }
+
   async function deleteProduct(productId: number) {
     await fetch(
       `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products?id=eq.${productId}`,
@@ -116,35 +140,10 @@ export function Home() {
 
         productDeletedSuccessfully();
 
-        fetchProductsData();
+        await fetchProductsData();
       }
     } catch (error) {
       productNotDeleted();
-    }
-  }
-
-  async function fetchProductsData() {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/Products`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: `${import.meta.env.VITE_SUPABASE_KEY}`,
-          },
-        }
-      );
-
-      const products = await response.json();
-
-      setApiProducts(products);
-
-      setIsLoadingProductsList(false);
-    } catch (error) {
-      productsLoadedError();
-
-      setIsLoadingProductsList(false);
     }
   }
 
@@ -152,9 +151,7 @@ export function Home() {
     fetchProductsData();
   }, []);
 
-  useEffect(() => {
-    setFilteredProducts(getFilteredProducts());
-  }, [orderbyInput, searchInput]);
+  const filteredProducts = getFilteredProducts();
 
   return (
     <div className="bg-white">
@@ -207,51 +204,26 @@ export function Home() {
             <Spinner className="mt-4 h-10 w-10 animate-spin" />
           ) : (
             <section className="flex max-w-[895px] flex-col items-center justify-center gap-8 sm:grid sm:grid-cols-2 sm:place-items-stretch sm:gap-5 md:grid-cols-3">
-              {filteredProducts.length > 0
-                ? filteredProducts.map((product) => (
-                    <Product
-                      key={product.id}
-                      id={product.id}
-                      image={product.image}
-                      name={product.name}
-                      description={product.description}
-                      priceWithoutDiscount={product.priceWithoutDiscount}
-                      priceWithDiscount={product.priceWithDiscount}
-                      discount={product.discount}
-                      installmentsNumber={product.installmentsNumber}
-                      created_at={product.created_at}
-                      brand={product.brand}
-                      category={product.category}
-                      deliveryDate={product.deliveryDate}
-                      installmentsValue={product.installmentsValue}
-                      quantity={product.quantity}
-                      onClick={() =>
-                        handleDeleteProduct(product.id, product.name)
-                      }
-                    />
-                  ))
-                : apiProducts.map((product) => (
-                    <Product
-                      key={product.id}
-                      id={product.id}
-                      image={product.image}
-                      name={product.name}
-                      description={product.description}
-                      priceWithoutDiscount={product.priceWithoutDiscount}
-                      priceWithDiscount={product.priceWithDiscount}
-                      discount={product.discount}
-                      installmentsNumber={product.installmentsNumber}
-                      created_at={product.created_at}
-                      brand={product.brand}
-                      category={product.category}
-                      deliveryDate={product.deliveryDate}
-                      installmentsValue={product.installmentsValue}
-                      quantity={product.quantity}
-                      onClick={() =>
-                        handleDeleteProduct(product.id, product.name)
-                      }
-                    />
-                  ))}
+              {filteredProducts.map((product) => (
+                <Product
+                  key={product.id}
+                  id={product.id}
+                  image={product.image}
+                  name={product.name}
+                  description={product.description}
+                  priceWithoutDiscount={product.priceWithoutDiscount}
+                  priceWithDiscount={product.priceWithDiscount}
+                  discount={product.discount}
+                  installmentsNumber={product.installmentsNumber}
+                  created_at={product.created_at}
+                  brand={product.brand}
+                  category={product.category}
+                  deliveryDate={product.deliveryDate}
+                  installmentsValue={product.installmentsValue}
+                  quantity={product.quantity}
+                  onClick={() => handleDeleteProduct(product.id, product.name)}
+                />
+              ))}
             </section>
           )}
         </div>
