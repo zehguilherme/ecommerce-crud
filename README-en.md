@@ -38,9 +38,7 @@ This is an application that manages a list of products from a fictitious e-comme
 
 ## 🚀 Getting started
 
-First of all you need to have `node` and `npm` (or `yarn`) installed on your machine.
-
-*If you decide to use yarn don't forget to delete `package-lock.json` in folders.*
+First of all you need to have [Node](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine.
 
 Then you can clone the repository.
 
@@ -51,8 +49,8 @@ Then you can clone the repository.
 Start the application
 
 1. `cd web`
-2. `npm install` or `yarn`
-3. `npm run dev` or `yarn dev`
+2. `npm install`
+3. `npm run dev`
 
 ## 🤔 How to contribute
 

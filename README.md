@@ -38,9 +38,7 @@ Esta é uma aplicação que gerencia uma lista de produtos de um e-commerce fict
 
 ## 🚀 Começando
 
-Primeiro de tudo você precisa ter `node` e `npm` (ou `yarn`) instalados em sua máquina.
-
-*Se você decidir usar o yarn não se esqueça de deletar `package-lock.json` nas pastas.*
+Primeiro de tudo você precisa ter [Node](https://nodejs.org/) e [npm](https://www.npmjs.com/) instalados em sua máquina.
 
 Então você pode clonar o repositório.
 
@@ -51,8 +49,8 @@ Então você pode clonar o repositório.
 Inicie a aplicação
 
 1. `cd web`
-2. `npm install` ou `yarn`
-3. `npm run dev` ou `yarn dev`
+2. `npm install`
+3. `npm run dev`
 
 ## 🤔 Como contribuir
 
